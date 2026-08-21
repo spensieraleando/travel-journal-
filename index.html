@@ -1,799 +1,711 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>spensieraleando — travel archive</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <title>spensieraleando</title>
+body {
+    background: #dedbd2;
+    color: #111;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+}
 
-    <style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* =================================
+   PAPER
+================================= */
 
-        html {
-            scroll-behavior: smooth;
-        }
+.paper {
+    min-height: 100vh;
+    padding: 50px 7%;
+    position: relative;
 
-        body {
-            background: #000;
-            color: #fff;
-            font-family: Arial, Helvetica, sans-serif;
-            overflow-x: hidden;
-        }
+    background:
+        radial-gradient(
+            rgba(0,0,0,0.04) 1px,
+            transparent 1px
+        );
 
+    background-size: 5px 5px;
+}
 
-        /* ==============================
-           TOP LOGO
-        ============================== */
 
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px;
-            display: flex;
-            justify-content: center;
-            z-index: 100;
-        }
+/* =================================
+   HEADER
+================================= */
 
-        .logo {
-            color: white;
-            font-size: 20px;
-            font-weight: 400;
-            letter-spacing: -0.5px;
-        }
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-        .logo .ale {
-            position: relative;
-        }
+    margin-bottom: 100px;
 
-        /* RED LINE UNDER ALE */
+    border-bottom: 1px solid #999;
+    padding-bottom: 18px;
+}
 
-        .logo .ale::after {
-            content: "";
-            position: absolute;
+.logo {
+    font-size: 25px;
+    font-style: italic;
+}
 
-            left: -2px;
-            right: -2px;
-            bottom: -4px;
+.logo span {
+    text-decoration: underline;
+    text-decoration-color: #b32626;
+    text-decoration-thickness: 2px;
+}
 
-            height: 2px;
+.archive {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
 
-            background: #ff3030;
 
-            transform: rotate(-2deg);
-        }
+/* =================================
+   INTRO
+================================= */
 
+.intro {
+    max-width: 650px;
+    margin-bottom: 100px;
+}
 
-        /* ==============================
-           HERO
-        ============================== */
+.intro h1 {
+    font-size: clamp(55px, 9vw, 120px);
+    font-weight: normal;
+    line-height: 0.85;
+    letter-spacing: -7px;
+}
 
-        .hero {
-            height: 100vh;
-            min-height: 700px;
+.intro p {
+    margin-top: 30px;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.7;
+    max-width: 350px;
+}
 
-            position: relative;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+/* =================================
+   FILM ARCHIVE
+================================= */
 
-            overflow: hidden;
-        }
+.film-archive {
+    position: relative;
 
+    display: flex;
+    flex-direction: column;
 
-        /* LITTLE DESCRIPTION */
+    gap: 90px;
 
-        .intro {
-            position: absolute;
+    padding: 50px 0 150px;
+}
 
-            top: 125px;
 
-            width: 100%;
+/* =================================
+   FILM STRIP
+================================= */
 
-            text-align: center;
+.film {
+    width: 90%;
+    height: 190px;
 
-            color: #777;
+    background: #090909;
 
-            font-size: 10px;
+    position: relative;
 
-            letter-spacing: 4px;
+    display: flex;
+    align-items: center;
 
-            text-transform: uppercase;
-        }
+    cursor: pointer;
 
+    transform: rotate(-2deg);
 
-        /* ==============================
-           GLOBE
-        ============================== */
+    transition:
+        transform 0.5s ease,
+        width 0.6s ease,
+        height 0.6s ease;
 
-        .globe-wrapper {
+    overflow: hidden;
 
-            position: relative;
+    box-shadow:
+        0 15px 25px rgba(0,0,0,0.25);
+}
 
-            width: 650px;
-            height: 650px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+/* Alternating angles */
 
+.film:nth-child(2) {
+    align-self: flex-end;
+    transform: rotate(2deg);
+}
 
-        .globe {
+.film:nth-child(3) {
+    transform: rotate(-1deg);
+}
 
-            width: 430px;
-            height: 430px;
+.film:nth-child(4) {
+    align-self: flex-end;
+    transform: rotate(3deg);
+}
 
-            border-radius: 50%;
 
-            position: relative;
+/* =================================
+   FILM HOLES
+================================= */
 
-            background:
+.holes {
+    position: absolute;
 
-                radial-gradient(
-                    circle at 32% 28%,
-                    #303030 0%,
-                    #181818 45%,
-                    #050505 75%,
-                    #000 100%
-                );
+    top: 5px;
+    bottom: 5px;
 
-            border: 1px solid #333;
+    left: 0;
+    right: 0;
 
-            box-shadow:
+    display: flex;
 
-                0 0 80px rgba(255,255,255,0.04),
+    justify-content: space-around;
 
-                inset 30px 20px 60px rgba(255,255,255,0.05),
+    pointer-events: none;
+}
 
-                inset -40px -30px 70px rgba(0,0,0,0.9);
+.hole {
+    width: 20px;
+    height: 12px;
 
-            animation: globeFloat 6s ease-in-out infinite;
-        }
+    background: #dedbd2;
 
+    margin-top: 0;
 
-        /* ==============================
-           GLOBE GRID LINES
-        ============================== */
+    box-shadow:
+        0 160px #dedbd2;
+}
 
-        .globe::before {
 
-            content: "";
+/* =================================
+   PHOTOS INSIDE FILM
+================================= */
 
-            position: absolute;
+.frames {
+    display: flex;
 
-            inset: 0;
+    gap: 12px;
 
-            border-radius: 50%;
+    padding: 25px 45px;
 
-            border-left: 1px solid rgba(255,255,255,0.12);
+    width: 100%;
 
-            border-right: 1px solid rgba(255,255,255,0.12);
+    justify-content: center;
+}
 
-            transform: scaleX(0.45);
-        }
+.frame {
 
+    width: 180px;
+    height: 130px;
 
-        .globe::after {
+    flex-shrink: 0;
 
-            content: "";
+    overflow: hidden;
 
-            position: absolute;
+    border-left: 2px solid #222;
+    border-right: 2px solid #222;
+}
 
-            inset: 0;
+.frame img {
 
-            border-radius: 50%;
+    width: 100%;
+    height: 100%;
 
-            border-top: 1px solid rgba(255,255,255,0.12);
+    object-fit: cover;
 
-            border-bottom: 1px solid rgba(255,255,255,0.12);
+    filter:
+        grayscale(1)
+        contrast(1.2)
+        brightness(0.8);
 
-            transform: scaleY(0.45);
-        }
+    transition: 0.5s ease;
+}
 
 
-        /* ==============================
-           CONTINENTS
-        ============================== */
+/* =================================
+   COUNTRY LABEL
+================================= */
 
-        .continent {
+.country {
 
-            position: absolute;
+    position: absolute;
 
-            background: #555;
+    z-index: 5;
 
-            opacity: 0.65;
+    left: 50%;
+    top: 50%;
 
-            filter: blur(0.5px);
-        }
+    transform: translate(-50%, -50%);
 
+    color: white;
 
-        .europe {
+    font-family: Arial, sans-serif;
 
-            width: 80px;
-            height: 45px;
+    font-size: 13px;
 
-            top: 105px;
-            left: 205px;
+    letter-spacing: 5px;
 
-            border-radius: 60% 40% 50% 40%;
+    text-transform: uppercase;
 
-            transform: rotate(-15deg);
-        }
+    pointer-events: none;
 
+    background: rgba(0,0,0,0.7);
 
-        .africa {
+    padding: 10px 18px;
+}
 
-            width: 85px;
-            height: 145px;
 
-            top: 145px;
-            left: 215px;
+/* =================================
+   HOVER
+================================= */
 
-            border-radius: 45% 45% 55% 40%;
+.film:hover {
 
-            transform: rotate(10deg);
-        }
+    width: 96%;
 
+    transform:
+        rotate(0deg)
+        scale(1.02);
 
-        .asia {
+    box-shadow:
+        0 25px 50px rgba(0,0,0,0.35);
+}
 
-            width: 145px;
-            height: 70px;
+.film:hover img {
 
-            top: 95px;
-            left: 260px;
+    filter:
+        grayscale(0)
+        contrast(1)
+        brightness(1);
+}
 
-            border-radius: 50%;
 
-            transform: rotate(8deg);
-        }
+/* =================================
+   ACTIVE / CLICKED FILM
+================================= */
 
+.film.active {
 
-        .north-america {
+    position: fixed;
 
-            width: 85px;
-            height: 145px;
+    z-index: 1000;
 
-            top: 95px;
-            left: 70px;
+    width: 90vw;
 
-            border-radius: 55% 45% 50% 40%;
+    height: 80vh;
 
-            transform: rotate(15deg);
-        }
+    left: 5vw;
 
+    top: 10vh;
 
-        .south-america {
+    transform: rotate(0deg);
 
-            width: 55px;
-            height: 125px;
+    box-shadow:
+        0 30px 100px rgba(0,0,0,0.6);
 
-            top: 245px;
-            left: 135px;
+    cursor: default;
 
-            border-radius: 50%;
+    overflow-y: auto;
+}
 
-            transform: rotate(18deg);
-        }
 
+/* Make the photographs bigger */
 
-        /* ==============================
-           FALLING ALE
-        ============================== */
+.film.active .frames {
 
-        .fall {
+    flex-wrap: wrap;
 
-            position: absolute;
+    padding: 80px 50px;
 
-            color: white;
+    gap: 25px;
+}
 
-            font-size: 18px;
+.film.active .frame {
 
-            font-weight: 500;
+    width: 250px;
 
-            letter-spacing: 3px;
+    height: 180px;
+}
 
-            opacity: 0;
+.film.active .frame img {
 
-            z-index: 20;
+    filter:
+        grayscale(0)
+        contrast(1)
+        brightness(1);
+}
 
-            animation-name: falling;
 
-            animation-timing-function: linear;
+/* =================================
+   CLOSE BUTTON
+================================= */
 
-            animation-iteration-count: infinite;
-        }
+.close {
 
+    position: absolute;
 
-        .a1 {
-            left: 39%;
-            top: 39%;
-            animation-duration: 5s;
-            animation-delay: 0s;
-        }
+    right: 25px;
+    top: 20px;
 
-        .l1 {
-            left: 48%;
-            top: 37%;
-            animation-duration: 6s;
-            animation-delay: 1s;
-        }
+    z-index: 20;
 
-        .e1 {
-            left: 56%;
-            top: 40%;
-            animation-duration: 5.5s;
-            animation-delay: 2s;
-        }
+    color: white;
 
+    font-family: Arial, sans-serif;
 
-        .a2 {
-            left: 44%;
-            top: 42%;
-            animation-duration: 7s;
-            animation-delay: 3s;
-        }
+    font-size: 12px;
 
-        .l2 {
-            left: 54%;
-            top: 45%;
-            animation-duration: 6.5s;
-            animation-delay: 1.5s;
-        }
+    letter-spacing: 2px;
 
-        .e2 {
-            left: 61%;
-            top: 38%;
-            animation-duration: 7.5s;
-            animation-delay: 2.5s;
-        }
+    cursor: pointer;
 
+    display: none;
+}
 
-        @keyframes falling {
+.film.active .close {
+    display: block;
+}
 
-            0% {
 
-                opacity: 0;
+/* =================================
+   DARK OVERLAY
+================================= */
 
-                transform:
-                    translateY(-10px)
-                    rotate(0deg);
-            }
+.overlay {
 
-            15% {
+    position: fixed;
 
-                opacity: 1;
-            }
+    inset: 0;
 
-            55% {
+    background: rgba(0,0,0,0.75);
 
-                opacity: 0.8;
-            }
+    z-index: 900;
 
-            100% {
+    opacity: 0;
 
-                opacity: 0;
+    pointer-events: none;
 
-                transform:
-                    translateY(420px)
-                    rotate(35deg);
-            }
-        }
+    transition: opacity 0.4s ease;
+}
 
+.overlay.active {
 
-        /* ==============================
-           GLOBE FLOATING
-        ============================== */
+    opacity: 1;
 
-        @keyframes globeFloat {
+    pointer-events: auto;
+}
 
-            0%,
-            100% {
 
-                transform: translateY(0);
-            }
+/* =================================
+   FOOTER
+================================= */
 
-            50% {
+footer {
 
-                transform: translateY(-12px);
-            }
-        }
+    border-top: 1px solid #999;
 
+    padding: 30px 0;
 
-        /* ==============================
-           SCROLL TEXT
-        ============================== */
+    display: flex;
 
-        .scroll {
+    justify-content: space-between;
 
-            position: absolute;
+    font-family: Arial, sans-serif;
 
-            bottom: 30px;
+    font-size: 9px;
 
-            left: 50%;
+    letter-spacing: 2px;
 
-            transform: translateX(-50%);
+    text-transform: uppercase;
 
-            color: #555;
+    color: #555;
+}
 
-            font-size: 9px;
 
-            letter-spacing: 4px;
+/* =================================
+   MOBILE
+================================= */
 
-            text-transform: uppercase;
-        }
+@media(max-width: 700px) {
 
+    .paper {
+        padding: 30px 5%;
+    }
 
-        /* ==============================
-           TRAVEL SECTION
-        ============================== */
+    header {
+        margin-bottom: 70px;
+    }
 
-        .travels {
+    .intro {
+        margin-bottom: 70px;
+    }
 
-            background: #000;
+    .film {
+        width: 100%;
+        height: 150px;
+    }
 
-            padding: 150px 8%;
+    .frame {
+        width: 130px;
+        height: 95px;
+    }
 
-            border-top: 1px solid #181818;
-        }
+    .frames {
+        padding: 25px;
+        gap: 7px;
+    }
 
+    .film.active {
+        width: 94vw;
+        left: 3vw;
+        height: 85vh;
+        top: 7vh;
+    }
 
-        .travels-title {
+    .film.active .frame {
+        width: 100%;
+        height: 200px;
+    }
 
-            font-size: clamp(55px, 9vw, 130px);
+    .film.active .frames {
+        padding: 60px 20px;
+    }
 
-            font-weight: 300;
+}
 
-            letter-spacing: -7px;
 
-            line-height: 0.9;
+/* =================================
+   CAMERA FLASH EFFECT
+================================= */
 
-            margin-bottom: 100px;
-        }
+.flash {
 
+    position: fixed;
 
-        /* ==============================
-           PHOTO GRID
-        ============================== */
+    inset: 0;
 
-        .gallery {
+    background: white;
 
-            display: grid;
+    z-index: 2000;
 
-            grid-template-columns: repeat(2, 1fr);
+    opacity: 0;
 
-            gap: 25px;
-        }
+    pointer-events: none;
+}
 
+.flash.active {
 
-        .photo {
+    animation: cameraFlash 0.5s ease;
+}
 
-            height: 600px;
+@keyframes cameraFlash {
 
-            position: relative;
+    0% {
+        opacity: 0;
+    }
 
-            overflow: hidden;
+    20% {
+        opacity: 0.9;
+    }
 
-            background: #111;
-        }
+    100% {
+        opacity: 0;
+    }
+}
 
-
-        .photo img {
-
-            width: 100%;
-
-            height: 100%;
-
-            object-fit: cover;
-
-            opacity: 0.85;
-
-            transition:
-
-                transform 0.8s ease,
-
-                opacity 0.8s ease;
-        }
-
-
-        .photo:hover img {
-
-            transform: scale(1.04);
-
-            opacity: 1;
-        }
-
-
-        .location {
-
-            position: absolute;
-
-            left: 25px;
-
-            bottom: 25px;
-
-            font-size: 18px;
-
-            letter-spacing: 1px;
-        }
-
-
-        /* ==============================
-           FOOTER
-        ============================== */
-
-        footer {
-
-            padding: 50px 8%;
-
-            border-top: 1px solid #181818;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            color: #555;
-
-            font-size: 10px;
-
-            letter-spacing: 2px;
-        }
-
-
-        /* ==============================
-           MOBILE
-        ============================== */
-
-        @media (max-width: 700px) {
-
-            header {
-                padding: 25px;
-            }
-
-
-            .globe-wrapper {
-
-                width: 100vw;
-
-                height: 500px;
-            }
-
-
-            .globe {
-
-                width: 300px;
-
-                height: 300px;
-            }
-
-
-            .europe {
-
-                width: 55px;
-                height: 30px;
-
-                top: 75px;
-                left: 145px;
-            }
-
-
-            .africa {
-
-                width: 65px;
-                height: 105px;
-
-                top: 105px;
-                left: 150px;
-            }
-
-
-            .asia {
-
-                width: 105px;
-                height: 50px;
-
-                top: 65px;
-                left: 185px;
-            }
-
-
-            .north-america {
-
-                width: 60px;
-                height: 105px;
-
-                top: 65px;
-                left: 50px;
-            }
-
-
-            .south-america {
-
-                width: 40px;
-                height: 90px;
-
-                top: 170px;
-                left: 95px;
-            }
-
-
-            .travels {
-
-                padding: 100px 6%;
-            }
-
-
-            .gallery {
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .photo {
-
-                height: 450px;
-            }
-
-
-            footer {
-
-                flex-direction: column;
-
-                gap: 15px;
-            }
-
-        }
-
-    </style>
-
+</style>
 </head>
 
 
 <body>
 
 
-    <!-- ==========================
-         LOGO
-    =========================== -->
+<div class="paper">
+
+
+    <!-- HEADER -->
 
     <header>
 
         <div class="logo">
+            spensier<span>ale</span>ando
+        </div>
 
-            spensier<span class="ale">ale</span>ando
-
+        <div class="archive">
+            personal travel archive · 2026
         </div>
 
     </header>
 
 
 
-    <!-- ==========================
-         HERO
-    =========================== -->
+    <!-- INTRO -->
 
-    <section class="hero">
+    <section class="intro">
 
-
-        <div class="intro">
-
-            a visual diary of everywhere i've been
-
-        </div>
-
-
-
-        <div class="globe-wrapper">
-
-
-            <!-- WORLD -->
-
-            <div class="globe">
-
-                <div class="continent europe"></div>
-
-                <div class="continent africa"></div>
-
-                <div class="continent asia"></div>
-
-                <div class="continent north-america"></div>
-
-                <div class="continent south-america"></div>
-
-            </div>
-
-
-
-            <!-- FALLING LETTERS -->
-
-            <span class="fall a1">A</span>
-
-            <span class="fall l1">L</span>
-
-            <span class="fall e1">E</span>
-
-
-            <span class="fall a2">A</span>
-
-            <span class="fall l2">L</span>
-
-            <span class="fall e2">E</span>
-
-
-        </div>
-
-
-
-        <div class="scroll">
-
-            scroll ↓
-
-        </div>
-
-
-    </section>
-
-
-
-    <!-- ==========================
-         TRAVEL SECTION
-    =========================== -->
-
-    <section class="travels">
-
-
-        <h1 class="travels-title">
-
-            places<br>
-            i've been.
-
+        <h1>
+            Places<br>
+            I've Been.
         </h1>
 
+        <p>
+            A collection of photographs, places,
+            memories and moments collected
+            along the way.
+        </p>
+
+    </section>
 
 
-        <div class="gallery">
+
+    <!-- FILMS -->
+
+    <section class="film-archive">
 
 
-            <div class="photo">
+        <!-- ITALY -->
 
-                <img
-                    src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1600&q=90"
-                    alt="Rome"
-                >
+        <div class="film" onclick="openFilm(this)">
 
-                <div class="location">
+            <div class="close" onclick="closeFilm(event)">
+                CLOSE ×
+            </div>
 
-                    Roma, Italia
+            <div class="country">
+                Italia
+            </div>
 
+            <div class="frames">
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=80">
                 </div>
 
             </div>
 
+        </div>
 
 
-            <div class="photo">
 
-                <img
-                    src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1600&q=90"
-                    alt="Santorini"
-                >
+        <!-- GREECE -->
 
-                <div class="location">
+        <div class="film" onclick="openFilm(this)">
 
-                    Santorini, Greece
+            <div class="close" onclick="closeFilm(event)">
+                CLOSE ×
+            </div>
 
+            <div class="country">
+                Greece
+            </div>
+
+            <div class="frames">
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1000&q=80">
                 </div>
 
             </div>
 
+        </div>
+
+
+
+        <!-- UK -->
+
+        <div class="film" onclick="openFilm(this)">
+
+            <div class="close" onclick="closeFilm(event)">
+                CLOSE ×
+            </div>
+
+            <div class="country">
+                United Kingdom
+            </div>
+
+            <div class="frames">
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- FRANCE -->
+
+        <div class="film" onclick="openFilm(this)">
+
+            <div class="close" onclick="closeFilm(event)">
+                CLOSE ×
+            </div>
+
+            <div class="country">
+                France
+            </div>
+
+            <div class="frames">
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1000&q=80">
+                </div>
+
+            </div>
 
         </div>
 
@@ -802,9 +714,7 @@
 
 
 
-    <!-- ==========================
-         FOOTER
-    =========================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -813,12 +723,111 @@
         </span>
 
         <span>
-            © 2026
+            FILM / 01 — 04
+        </span>
+
+        <span>
+            KEEP TRAVELLING
         </span>
 
     </footer>
 
 
-</body>
+</div>
 
+
+<!-- DARK BACKGROUND -->
+
+<div class="overlay" id="overlay"></div>
+
+<!-- CAMERA FLASH -->
+
+<div class="flash" id="flash"></div>
+
+
+<script>
+
+function openFilm(film) {
+
+    event.stopPropagation();
+
+    film.classList.add("active");
+
+    document
+        .getElementById("overlay")
+        .classList.add("active");
+
+    document
+        .getElementById("flash")
+        .classList.add("active");
+
+    setTimeout(() => {
+
+        document
+            .getElementById("flash")
+            .classList.remove("active");
+
+    }, 500);
+
+}
+
+
+function closeFilm(event) {
+
+    event.stopPropagation();
+
+    const film =
+        event.target.closest(".film");
+
+    film.classList.remove("active");
+
+    document
+        .getElementById("overlay")
+        .classList.remove("active");
+}
+
+
+document
+    .getElementById("overlay")
+    .addEventListener("click", function() {
+
+        const activeFilm =
+            document.querySelector(".film.active");
+
+        if (activeFilm) {
+
+            activeFilm.classList.remove("active");
+
+            this.classList.remove("active");
+
+        }
+
+    });
+
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        const activeFilm =
+            document.querySelector(".film.active");
+
+        if (activeFilm) {
+
+            activeFilm.classList.remove("active");
+
+            document
+                .getElementById("overlay")
+                .classList.remove("active");
+
+        }
+
+    }
+
+});
+
+</script>
+
+
+</body>
 </html>
