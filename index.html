@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Travels</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f7f4;
+            color: #222;
+        }
+
+        /* NAVIGATION */
+        nav {
+            height: 75px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 7%;
+            background: #f8f7f4;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #222;
+            margin-left: 30px;
+            font-size: 14px;
+        }
+
+        nav a:hover {
+            opacity: 0.5;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 75vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 10vw, 130px);
+            font-weight: 400;
+            letter-spacing: -5px;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #666;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        .button {
+            margin-top: 35px;
+            padding: 14px 28px;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 14px;
+        }
+
+        .button:hover {
+            background: #555;
+        }
+
+        /* PHOTO SECTION */
+        section {
+            padding: 100px 7%;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 400;
+            margin-bottom: 50px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .travel-card {
+            position: relative;
+            height: 450px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .travel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .travel-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .location {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 22px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        /* MAP */
+        .map-section {
+            background: #ebe9e3;
+        }
+
+        .map {
+            width: 100%;
+            height: 500px;
+            background: #d8d6cf;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #777;
+            font-size: 18px;
+        }
+
+        .pin {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background: #222;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .pin:hover {
+            transform: scale(1.5);
+        }
+
+        .pin::after {
+            content: "";
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+            top: 5px;
+            left: 5px;
+        }
+
+        /* ABOUT */
+        .about {
+            max-width: 800px;
+        }
+
+        .about p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 7%;
+            border-top: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            nav a {
+                margin-left: 15px;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .travel-card {
+                height: 400px;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">MY TRAVELS</div>
+
+        <div>
+            <a href="#places">Places</a>
+            <a href="#map">Map</a>
+            <a href="#about">About</a>
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <div class="hero">
+
+        <h1>Everywhere<br>I’ve Been.</h1>
+
+        <p>
+            A collection of places, memories and moments
+            from my travels around the world.
+        </p>
+
+        <a href="#places" class="button">
+            Explore my travels
+        </a>
+
+    </div>
+
+
+    <!-- PLACES -->
+
+    <section id="places">
+
+        <h2 class="section-title">Places I've Been</h2>
+
+        <div class="gallery">
+
+            <div class="travel-card">
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80">
+                <div class="location">Santorini, Greece</div>
+            </div>
+
+            <div class="travel-card">
+                <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1200&q=80">
+                <div class="location">Rome, Italy</div>
+            </div>
+
+            <div class="travel-card">
+                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80">
+                <div class="location">Bali, Indonesia</div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- MAP -->
+
+    <section class="map-section" id="map">
+
+        <h2 class="section-title">My Map</h2>
+
+        <div class="map">
+
+            <div class="map-placeholder">
+                My travel map will live here 🌍
+            </div>
+
+            <!-- Example pins -->
+
+            <div class="pin" style="left: 35%; top: 40%;"></div>
+
+            <div class="pin" style="left: 50%; top: 55%;"></div>
+
+            <div class="pin" style="left: 70%; top: 35%;"></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="about">
+
+            <h2 class="section-title">About</h2>
+
+            <p>
+                I created this little corner of the internet to keep
+                track of the places I've visited, the photographs I've
+                taken and the memories I've collected along the way.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <span>© 2026 My Travels</span>
+
+        <span>Made with curiosity ✈️</span>
+
+    </footer>
+
+
+</body>
+</html>
