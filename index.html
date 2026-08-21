@@ -4,305 +4,529 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>spensieraleando — travel archive</title>
+<title>spensieraleando</title>
 
 <style>
 
+/* =====================================================
+   RESET
+===================================================== */
+
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-    background: #dedbd2;
-    color: #111;
-    font-family: Georgia, "Times New Roman", serif;
+    background: #a59d91;
+    color: #17130f;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
 
-/* =================================
-   PAPER
-================================= */
+/* =====================================================
+   WALL
+===================================================== */
 
-.paper {
+.wall {
+
     min-height: 100vh;
-    padding: 50px 7%;
+
     position: relative;
 
-    background:
+    padding-bottom: 150px;
+
+    background-color: #9d968b;
+
+    background-image:
+
         radial-gradient(
-            rgba(0,0,0,0.04) 1px,
-            transparent 1px
+            circle at 20% 30%,
+            rgba(255,255,255,0.12) 0px,
+            transparent 3px
+        ),
+
+        radial-gradient(
+            circle at 70% 80%,
+            rgba(0,0,0,0.10) 0px,
+            transparent 4px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(0,0,0,0.06),
+            transparent 20%,
+            rgba(255,255,255,0.06) 50%,
+            transparent 80%,
+            rgba(0,0,0,0.05)
         );
 
-    background-size: 5px 5px;
+    background-size:
+        17px 19px,
+        23px 27px,
+        100% 100%;
 }
 
 
-/* =================================
-   HEADER
-================================= */
+/* subtle wall cracks */
 
-header {
+.wall::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.35;
+
+    background-image:
+
+        linear-gradient(
+            115deg,
+            transparent 48%,
+            rgba(50,45,40,0.15) 49%,
+            transparent 50%
+        ),
+
+        linear-gradient(
+            70deg,
+            transparent 49%,
+            rgba(255,255,255,0.08) 50%,
+            transparent 51%
+        );
+
+    background-size:
+        500px 700px,
+        800px 600px;
+}
+
+
+/* =====================================================
+   GRAFFITI TITLE
+===================================================== */
+
+.header {
+
+    position: relative;
+
+    height: 300px;
+
     display: flex;
-    justify-content: space-between;
+
     align-items: center;
 
-    margin-bottom: 100px;
+    justify-content: center;
 
-    border-bottom: 1px solid #999;
-    padding-bottom: 18px;
+    overflow: hidden;
 }
+
 
 .logo {
-    font-size: 25px;
-    font-style: italic;
+
+    position: relative;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Black",
+        sans-serif;
+
+    font-size:
+        clamp(65px, 12vw, 180px);
+
+    font-weight: 900;
+
+    color: #17130f;
+
+    letter-spacing: -8px;
+
+    transform: rotate(-4deg);
+
+    text-transform: lowercase;
+
+    text-shadow:
+
+        3px 3px 0 rgba(0,0,0,0.12),
+
+        -2px -2px 0 rgba(255,255,255,0.15);
 }
 
-.logo span {
-    text-decoration: underline;
-    text-decoration-color: #b32626;
-    text-decoration-thickness: 2px;
+
+/* graffiti underline */
+
+.logo::after {
+
+    content: "";
+
+    position: absolute;
+
+    height: 10px;
+
+    width: 95%;
+
+    left: 3%;
+
+    bottom: -5px;
+
+    background: #b52b24;
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-3deg)
+        skewX(-20deg);
 }
 
-.archive {
-    font-family: Arial, sans-serif;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+
+/* little graffiti mark */
+
+.logo::before {
+
+    content: "✦";
+
+    position: absolute;
+
+    font-family: Arial;
+
+    font-size: 35px;
+
+    right: -40px;
+
+    top: 5px;
+
+    color: #b52b24;
+
+    transform: rotate(20deg);
 }
 
 
-/* =================================
-   INTRO
-================================= */
+/* =====================================================
+   INTRO TEXT
+===================================================== */
 
 .intro {
-    max-width: 650px;
-    margin-bottom: 100px;
-}
 
-.intro h1 {
-    font-size: clamp(55px, 9vw, 120px);
-    font-weight: normal;
-    line-height: 0.85;
-    letter-spacing: -7px;
-}
+    text-align: center;
 
-.intro p {
-    margin-top: 30px;
-    font-family: Arial, sans-serif;
-    font-size: 12px;
-    line-height: 1.7;
-    max-width: 350px;
+    font-family: Georgia, serif;
+
+    font-style: italic;
+
+    font-size: 18px;
+
+    margin-bottom: 70px;
+
+    opacity: 0.65;
 }
 
 
-/* =================================
-   FILM ARCHIVE
-================================= */
-
-.film-archive {
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-
-    gap: 90px;
-
-    padding: 50px 0 150px;
-}
-
-
-/* =================================
+/* =====================================================
    FILM STRIP
-================================= */
+===================================================== */
 
 .film {
-    width: 90%;
-    height: 190px;
 
-    background: #090909;
+    width: 100%;
+
+    height: 260px;
+
+    background:
+
+        linear-gradient(
+            180deg,
+            #6e3c1f 0%,
+            #9b5b2f 10%,
+            #7a4325 50%,
+            #9b5b2f 90%,
+            #62351f 100%
+        );
 
     position: relative;
 
-    display: flex;
-    align-items: center;
+    margin-bottom: 90px;
 
     cursor: pointer;
 
-    transform: rotate(-2deg);
+    transform: rotate(-1deg);
+
+    box-shadow:
+
+        0 18px 25px rgba(0,0,0,0.35),
+
+        inset 0 0 30px rgba(0,0,0,0.25);
 
     transition:
         transform 0.5s ease,
-        width 0.6s ease,
         height 0.6s ease;
 
     overflow: hidden;
-
-    box-shadow:
-        0 15px 25px rgba(0,0,0,0.25);
 }
 
 
-/* Alternating angles */
+.film:nth-child(even) {
 
-.film:nth-child(2) {
-    align-self: flex-end;
-    transform: rotate(2deg);
-}
-
-.film:nth-child(3) {
-    transform: rotate(-1deg);
-}
-
-.film:nth-child(4) {
-    align-self: flex-end;
-    transform: rotate(3deg);
+    transform: rotate(1deg);
 }
 
 
-/* =================================
-   FILM HOLES
-================================= */
+/* =====================================================
+   KODAK BRAND STRIP
+===================================================== */
 
-.holes {
+.film::after {
+
+    content: "KODAK  400  •  400  •  400  •  400  •  400  •  400";
+
     position: absolute;
 
-    top: 5px;
-    bottom: 5px;
+    right: 15px;
+
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        rotate(90deg);
+
+    color: rgba(255,225,170,0.45);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    white-space: nowrap;
+}
+
+
+/* =====================================================
+   PERFORATION HOLES
+===================================================== */
+
+.perforations {
+
+    position: absolute;
 
     left: 0;
+
     right: 0;
+
+    top: 8px;
 
     display: flex;
 
     justify-content: space-around;
 
-    pointer-events: none;
+    z-index: 10;
 }
+
+
+.perforations.bottom {
+
+    top: auto;
+
+    bottom: 8px;
+}
+
 
 .hole {
-    width: 20px;
-    height: 12px;
 
-    background: #dedbd2;
+    width: 27px;
 
-    margin-top: 0;
+    height: 15px;
+
+    background: #9d968b;
+
+    border-radius: 2px;
 
     box-shadow:
-        0 160px #dedbd2;
+        inset 0 1px 2px rgba(0,0,0,0.35);
 }
 
 
-/* =================================
-   PHOTOS INSIDE FILM
-================================= */
+/* =====================================================
+   FILM FRAMES
+===================================================== */
 
 .frames {
+
+    height: 100%;
+
     display: flex;
 
-    gap: 12px;
+    align-items: center;
 
-    padding: 25px 45px;
+    gap: 8px;
 
-    width: 100%;
+    padding:
+        35px 45px;
 
-    justify-content: center;
+    overflow: hidden;
 }
+
 
 .frame {
 
-    width: 180px;
-    height: 130px;
+    flex: 1;
 
-    flex-shrink: 0;
+    min-width: 180px;
+
+    height: 185px;
+
+    border:
+
+        2px solid
+        rgba(220,165,105,0.45);
 
     overflow: hidden;
 
-    border-left: 2px solid #222;
-    border-right: 2px solid #222;
+    position: relative;
+
+    background: #4c2818;
 }
+
+
+/* =====================================================
+   NEGATIVE PHOTOS
+===================================================== */
 
 .frame img {
 
     width: 100%;
+
     height: 100%;
 
     object-fit: cover;
 
-    filter:
-        grayscale(1)
-        contrast(1.2)
-        brightness(0.8);
+    /*
+       NEGATIVE EFFECT
+    */
 
-    transition: 0.5s ease;
+    filter:
+
+        invert(1)
+
+        sepia(0.75)
+
+        saturate(1.3)
+
+        contrast(1.2)
+
+        brightness(0.9);
+
+    opacity: 0.85;
+
+    transition:
+
+        filter 0.6s ease,
+
+        transform 0.6s ease;
 }
 
 
-/* =================================
-   COUNTRY LABEL
-================================= */
+/* frame number */
+
+.frame::after {
+
+    content: "36";
+
+    position: absolute;
+
+    right: 6px;
+
+    bottom: 4px;
+
+    color: rgba(255,220,170,0.7);
+
+    font-family: monospace;
+
+    font-size: 10px;
+}
+
+
+/* =====================================================
+   COUNTRY NAME
+===================================================== */
 
 .country {
 
     position: absolute;
 
-    z-index: 5;
-
     left: 50%;
+
     top: 50%;
 
-    transform: translate(-50%, -50%);
+    transform:
+        translate(-50%, -50%)
+        rotate(-2deg);
 
-    color: white;
+    z-index: 20;
 
-    font-family: Arial, sans-serif;
+    color: #f1c58f;
 
-    font-size: 13px;
+    font-family:
+        Impact,
+        "Arial Black",
+        sans-serif;
 
-    letter-spacing: 5px;
+    font-size: 35px;
+
+    letter-spacing: 6px;
 
     text-transform: uppercase;
 
+    text-shadow:
+
+        2px 2px 0 #32170b,
+
+        0 0 15px rgba(0,0,0,0.6);
+
     pointer-events: none;
-
-    background: rgba(0,0,0,0.7);
-
-    padding: 10px 18px;
 }
 
 
-/* =================================
+/* =====================================================
    HOVER
-================================= */
+===================================================== */
 
 .film:hover {
 
-    width: 96%;
-
     transform:
         rotate(0deg)
-        scale(1.02);
+        scale(1.015);
 
     box-shadow:
-        0 25px 50px rgba(0,0,0,0.35);
+
+        0 25px 40px rgba(0,0,0,0.45);
 }
+
 
 .film:hover img {
 
     filter:
-        grayscale(0)
-        contrast(1)
-        brightness(1);
+
+        invert(1)
+
+        sepia(0.4)
+
+        saturate(1.1)
+
+        contrast(1.35);
+
+    transform: scale(1.04);
 }
 
 
-/* =================================
-   ACTIVE / CLICKED FILM
-================================= */
+/* =====================================================
+   CLICKED FILM
+===================================================== */
 
 .film.active {
 
@@ -310,86 +534,75 @@ header {
 
     z-index: 1000;
 
-    width: 90vw;
+    left: 3vw;
 
-    height: 80vh;
+    top: 8vh;
 
-    left: 5vw;
+    width: 94vw;
 
-    top: 10vh;
+    height: 84vh;
+
+    margin: 0;
 
     transform: rotate(0deg);
 
-    box-shadow:
-        0 30px 100px rgba(0,0,0,0.6);
-
-    cursor: default;
-
     overflow-y: auto;
+
+    box-shadow:
+
+        0 30px 100px rgba(0,0,0,0.7);
 }
 
-
-/* Make the photographs bigger */
 
 .film.active .frames {
 
     flex-wrap: wrap;
 
+    height: auto;
+
     padding: 80px 50px;
 
-    gap: 25px;
+    justify-content: center;
 }
+
 
 .film.active .frame {
 
-    width: 250px;
+    flex: none;
 
-    height: 180px;
-}
+    width: 300px;
 
-.film.active .frame img {
-
-    filter:
-        grayscale(0)
-        contrast(1)
-        brightness(1);
+    height: 220px;
 }
 
 
-/* =================================
+/* =====================================================
    CLOSE BUTTON
-================================= */
+===================================================== */
 
 .close {
 
     position: absolute;
 
-    right: 25px;
-    top: 20px;
+    top: 25px;
 
-    z-index: 20;
+    right: 35px;
 
-    color: white;
+    z-index: 50;
 
-    font-family: Arial, sans-serif;
+    color: #f1c58f;
 
     font-size: 12px;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
     cursor: pointer;
-
-    display: none;
-}
-
-.film.active .close {
-    display: block;
 }
 
 
-/* =================================
-   DARK OVERLAY
-================================= */
+/* =====================================================
+   OVERLAY
+===================================================== */
 
 .overlay {
 
@@ -397,7 +610,7 @@ header {
 
     inset: 0;
 
-    background: rgba(0,0,0,0.75);
+    background: rgba(0,0,0,0.72);
 
     z-index: 900;
 
@@ -408,6 +621,7 @@ header {
     transition: opacity 0.4s ease;
 }
 
+
 .overlay.active {
 
     opacity: 1;
@@ -416,120 +630,86 @@ header {
 }
 
 
-/* =================================
-   FOOTER
-================================= */
+/* =====================================================
+   BOTTOM TEXT
+===================================================== */
 
-footer {
+.bottom {
 
-    border-top: 1px solid #999;
+    text-align: center;
 
-    padding: 30px 0;
+    padding: 100px 20px 50px;
 
-    display: flex;
+    font-family: Arial;
 
-    justify-content: space-between;
+    font-size: 10px;
 
-    font-family: Arial, sans-serif;
+    letter-spacing: 4px;
 
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-    color: #555;
+    opacity: 0.5;
 }
 
 
-/* =================================
+/* =====================================================
    MOBILE
-================================= */
+===================================================== */
 
 @media(max-width: 700px) {
 
-    .paper {
-        padding: 30px 5%;
+    .header {
+
+        height: 220px;
     }
 
-    header {
-        margin-bottom: 70px;
-    }
+    .logo {
 
-    .intro {
-        margin-bottom: 70px;
+        font-size: 60px;
+
+        letter-spacing: -4px;
     }
 
     .film {
-        width: 100%;
-        height: 150px;
-    }
 
-    .frame {
-        width: 130px;
-        height: 95px;
+        height: 190px;
     }
 
     .frames {
-        padding: 25px;
-        gap: 7px;
+
+        padding: 30px;
+
+        gap: 5px;
+    }
+
+    .frame {
+
+        min-width: 110px;
+
+        height: 130px;
+    }
+
+    .country {
+
+        font-size: 23px;
+
+        letter-spacing: 3px;
     }
 
     .film.active {
-        width: 94vw;
-        left: 3vw;
-        height: 85vh;
-        top: 7vh;
+
+        left: 2vw;
+
+        top: 5vh;
+
+        width: 96vw;
+
+        height: 90vh;
     }
 
     .film.active .frame {
+
         width: 100%;
-        height: 200px;
-    }
 
-    .film.active .frames {
-        padding: 60px 20px;
-    }
-
-}
-
-
-/* =================================
-   CAMERA FLASH EFFECT
-================================= */
-
-.flash {
-
-    position: fixed;
-
-    inset: 0;
-
-    background: white;
-
-    z-index: 2000;
-
-    opacity: 0;
-
-    pointer-events: none;
-}
-
-.flash.active {
-
-    animation: cameraFlash 0.5s ease;
-}
-
-@keyframes cameraFlash {
-
-    0% {
-        opacity: 0;
-    }
-
-    20% {
-        opacity: 0.9;
-    }
-
-    100% {
-        opacity: 0;
+        height: 210px;
     }
 }
 
@@ -540,209 +720,295 @@ footer {
 <body>
 
 
-<div class="paper">
+<div class="wall">
 
 
-    <!-- HEADER -->
+    <!-- ==========================================
+         GRAFFITI HEADER
+    =========================================== -->
 
-    <header>
+    <header class="header">
 
         <div class="logo">
-            spensier<span>ale</span>ando
-        </div>
-
-        <div class="archive">
-            personal travel archive · 2026
+            spensieraleando
         </div>
 
     </header>
 
 
+    <div class="intro">
 
-    <!-- INTRO -->
+        my little archive of everywhere i've been
 
-    <section class="intro">
-
-        <h1>
-            Places<br>
-            I've Been.
-        </h1>
-
-        <p>
-            A collection of photographs, places,
-            memories and moments collected
-            along the way.
-        </p>
-
-    </section>
+    </div>
 
 
 
-    <!-- FILMS -->
+    <!-- ==========================================
+         ITALY
+    =========================================== -->
 
-    <section class="film-archive">
+    <div class="film" onclick="openFilm(this)">
+
+        <div class="close"
+             onclick="closeFilm(event)">
+            CLOSE ×
+        </div>
 
 
-        <!-- ITALY -->
+        <div class="perforations">
 
-        <div class="film" onclick="openFilm(this)">
-
-            <div class="close" onclick="closeFilm(event)">
-                CLOSE ×
-            </div>
-
-            <div class="country">
-                Italia
-            </div>
-
-            <div class="frames">
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-            </div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
 
         </div>
 
 
+        <div class="perforations bottom">
 
-        <!-- GREECE -->
-
-        <div class="film" onclick="openFilm(this)">
-
-            <div class="close" onclick="closeFilm(event)">
-                CLOSE ×
-            </div>
-
-            <div class="country">
-                Greece
-            </div>
-
-            <div class="frames">
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-            </div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
 
         </div>
 
 
+        <div class="country">
+            ITALIA
+        </div>
 
-        <!-- UK -->
 
-        <div class="film" onclick="openFilm(this)">
+        <div class="frames">
 
-            <div class="close" onclick="closeFilm(event)">
-                CLOSE ×
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1000&q=90">
             </div>
 
-            <div class="country">
-                United Kingdom
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=90">
             </div>
 
-            <div class="frames">
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=90">
             </div>
 
         </div>
 
+    </div>
 
 
-        <!-- FRANCE -->
 
-        <div class="film" onclick="openFilm(this)">
+    <!-- ==========================================
+         GREECE
+    =========================================== -->
 
-            <div class="close" onclick="closeFilm(event)">
-                CLOSE ×
-            </div>
+    <div class="film" onclick="openFilm(this)">
 
-            <div class="country">
-                France
-            </div>
+        <div class="close"
+             onclick="closeFilm(event)">
+            CLOSE ×
+        </div>
 
-            <div class="frames">
 
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1000&q=80">
-                </div>
+        <div class="perforations">
 
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=1000&q=80">
-                </div>
-
-            </div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
 
         </div>
 
 
-    </section>
+        <div class="perforations bottom">
+
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+
+        </div>
+
+
+        <div class="country">
+            GREECE
+        </div>
+
+
+        <div class="frames">
+
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=90">
+            </div>
+
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=1000&q=90">
+            </div>
+
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1000&q=90">
+            </div>
+
+        </div>
+
+    </div>
 
 
 
-    <!-- FOOTER -->
+    <!-- ==========================================
+         UK
+    =========================================== -->
 
-    <footer>
+    <div class="film" onclick="openFilm(this)">
 
-        <span>
-            SPENSIERALEANDO
-        </span>
+        <div class="close"
+             onclick="closeFilm(event)">
+            CLOSE ×
+        </div>
 
-        <span>
-            FILM / 01 — 04
-        </span>
 
-        <span>
-            KEEP TRAVELLING
-        </span>
+        <div class="perforations">
 
-    </footer>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+
+        </div>
+
+
+        <div class="perforations bottom">
+
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+            <div class="hole"></div>
+
+        </div>
+
+
+        <div class="country">
+            LONDON
+        </div>
+
+
+        <div class="frames">
+
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=90">
+            </div>
+
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1000&q=90">
+            </div>
+
+            <div class="frame">
+                <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1000&q=90">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==========================================
+         BOTTOM
+    =========================================== -->
+
+    <div class="bottom">
+
+        35MM / TRAVEL ARCHIVE / SPENSIERALEANDO
+
+    </div>
 
 
 </div>
 
 
-<!-- DARK BACKGROUND -->
 
-<div class="overlay" id="overlay"></div>
+<!-- OVERLAY -->
 
-<!-- CAMERA FLASH -->
+<div
+    class="overlay"
+    id="overlay">
+</div>
 
-<div class="flash" id="flash"></div>
 
 
 <script>
@@ -756,18 +1022,6 @@ function openFilm(film) {
     document
         .getElementById("overlay")
         .classList.add("active");
-
-    document
-        .getElementById("flash")
-        .classList.add("active");
-
-    setTimeout(() => {
-
-        document
-            .getElementById("flash")
-            .classList.remove("active");
-
-    }, 500);
 
 }
 
@@ -784,47 +1038,66 @@ function closeFilm(event) {
     document
         .getElementById("overlay")
         .classList.remove("active");
+
 }
 
 
 document
     .getElementById("overlay")
-    .addEventListener("click", function() {
+    .addEventListener(
+        "click",
+        function() {
 
-        const activeFilm =
-            document.querySelector(".film.active");
+            const active =
+                document.querySelector(
+                    ".film.active"
+                );
 
-        if (activeFilm) {
+            if (active) {
 
-            activeFilm.classList.remove("active");
+                active.classList.remove(
+                    "active"
+                );
 
-            this.classList.remove("active");
+                this.classList.remove(
+                    "active"
+                );
+
+            }
 
         }
+    );
 
-    });
 
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-document.addEventListener("keydown", function(event) {
+        if (event.key === "Escape") {
 
-    if (event.key === "Escape") {
+            const active =
+                document.querySelector(
+                    ".film.active"
+                );
 
-        const activeFilm =
-            document.querySelector(".film.active");
+            if (active) {
 
-        if (activeFilm) {
+                active.classList.remove(
+                    "active"
+                );
 
-            activeFilm.classList.remove("active");
+                document
+                    .getElementById("overlay")
+                    .classList.remove(
+                        "active"
+                    );
 
-            document
-                .getElementById("overlay")
-                .classList.remove("active");
+            }
 
         }
 
     }
-
-});
+);
 
 </script>
 
