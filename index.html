@@ -4,349 +4,821 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>My Travels</title>
+    <title>spensieraleando</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f8f7f4;
-            color: #222;
+        html {
+            scroll-behavior: smooth;
         }
 
-        /* NAVIGATION */
-        nav {
-            height: 75px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 7%;
-            background: #f8f7f4;
-            position: sticky;
+        body {
+            background: #000;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+            overflow-x: hidden;
+        }
+
+
+        /* ==============================
+           TOP LOGO
+        ============================== */
+
+        header {
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
             z-index: 100;
         }
 
         .logo {
-            font-size: 22px;
-            font-weight: bold;
+            color: white;
+            font-size: 20px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .logo .ale {
+            position: relative;
+        }
+
+        /* RED LINE UNDER ALE */
+
+        .logo .ale::after {
+            content: "";
+            position: absolute;
+
+            left: -2px;
+            right: -2px;
+            bottom: -4px;
+
+            height: 2px;
+
+            background: #ff3030;
+
+            transform: rotate(-2deg);
+        }
+
+
+        /* ==============================
+           HERO
+        ============================== */
+
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            overflow: hidden;
+        }
+
+
+        /* LITTLE DESCRIPTION */
+
+        .intro {
+            position: absolute;
+
+            top: 125px;
+
+            width: 100%;
+
+            text-align: center;
+
+            color: #777;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ==============================
+           GLOBE
+        ============================== */
+
+        .globe-wrapper {
+
+            position: relative;
+
+            width: 650px;
+            height: 650px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+        .globe {
+
+            width: 430px;
+            height: 430px;
+
+            border-radius: 50%;
+
+            position: relative;
+
+            background:
+
+                radial-gradient(
+                    circle at 32% 28%,
+                    #303030 0%,
+                    #181818 45%,
+                    #050505 75%,
+                    #000 100%
+                );
+
+            border: 1px solid #333;
+
+            box-shadow:
+
+                0 0 80px rgba(255,255,255,0.04),
+
+                inset 30px 20px 60px rgba(255,255,255,0.05),
+
+                inset -40px -30px 70px rgba(0,0,0,0.9);
+
+            animation: globeFloat 6s ease-in-out infinite;
+        }
+
+
+        /* ==============================
+           GLOBE GRID LINES
+        ============================== */
+
+        .globe::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            border-radius: 50%;
+
+            border-left: 1px solid rgba(255,255,255,0.12);
+
+            border-right: 1px solid rgba(255,255,255,0.12);
+
+            transform: scaleX(0.45);
+        }
+
+
+        .globe::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            border-radius: 50%;
+
+            border-top: 1px solid rgba(255,255,255,0.12);
+
+            border-bottom: 1px solid rgba(255,255,255,0.12);
+
+            transform: scaleY(0.45);
+        }
+
+
+        /* ==============================
+           CONTINENTS
+        ============================== */
+
+        .continent {
+
+            position: absolute;
+
+            background: #555;
+
+            opacity: 0.65;
+
+            filter: blur(0.5px);
+        }
+
+
+        .europe {
+
+            width: 80px;
+            height: 45px;
+
+            top: 105px;
+            left: 205px;
+
+            border-radius: 60% 40% 50% 40%;
+
+            transform: rotate(-15deg);
+        }
+
+
+        .africa {
+
+            width: 85px;
+            height: 145px;
+
+            top: 145px;
+            left: 215px;
+
+            border-radius: 45% 45% 55% 40%;
+
+            transform: rotate(10deg);
+        }
+
+
+        .asia {
+
+            width: 145px;
+            height: 70px;
+
+            top: 95px;
+            left: 260px;
+
+            border-radius: 50%;
+
+            transform: rotate(8deg);
+        }
+
+
+        .north-america {
+
+            width: 85px;
+            height: 145px;
+
+            top: 95px;
+            left: 70px;
+
+            border-radius: 55% 45% 50% 40%;
+
+            transform: rotate(15deg);
+        }
+
+
+        .south-america {
+
+            width: 55px;
+            height: 125px;
+
+            top: 245px;
+            left: 135px;
+
+            border-radius: 50%;
+
+            transform: rotate(18deg);
+        }
+
+
+        /* ==============================
+           FALLING ALE
+        ============================== */
+
+        .fall {
+
+            position: absolute;
+
+            color: white;
+
+            font-size: 18px;
+
+            font-weight: 500;
+
+            letter-spacing: 3px;
+
+            opacity: 0;
+
+            z-index: 20;
+
+            animation-name: falling;
+
+            animation-timing-function: linear;
+
+            animation-iteration-count: infinite;
+        }
+
+
+        .a1 {
+            left: 39%;
+            top: 39%;
+            animation-duration: 5s;
+            animation-delay: 0s;
+        }
+
+        .l1 {
+            left: 48%;
+            top: 37%;
+            animation-duration: 6s;
+            animation-delay: 1s;
+        }
+
+        .e1 {
+            left: 56%;
+            top: 40%;
+            animation-duration: 5.5s;
+            animation-delay: 2s;
+        }
+
+
+        .a2 {
+            left: 44%;
+            top: 42%;
+            animation-duration: 7s;
+            animation-delay: 3s;
+        }
+
+        .l2 {
+            left: 54%;
+            top: 45%;
+            animation-duration: 6.5s;
+            animation-delay: 1.5s;
+        }
+
+        .e2 {
+            left: 61%;
+            top: 38%;
+            animation-duration: 7.5s;
+            animation-delay: 2.5s;
+        }
+
+
+        @keyframes falling {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(-10px)
+                    rotate(0deg);
+            }
+
+            15% {
+
+                opacity: 1;
+            }
+
+            55% {
+
+                opacity: 0.8;
+            }
+
+            100% {
+
+                opacity: 0;
+
+                transform:
+                    translateY(420px)
+                    rotate(35deg);
+            }
+        }
+
+
+        /* ==============================
+           GLOBE FLOATING
+        ============================== */
+
+        @keyframes globeFloat {
+
+            0%,
+            100% {
+
+                transform: translateY(0);
+            }
+
+            50% {
+
+                transform: translateY(-12px);
+            }
+        }
+
+
+        /* ==============================
+           SCROLL TEXT
+        ============================== */
+
+        .scroll {
+
+            position: absolute;
+
+            bottom: 30px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            color: #555;
+
+            font-size: 9px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+        }
+
+
+        /* ==============================
+           TRAVEL SECTION
+        ============================== */
+
+        .travels {
+
+            background: #000;
+
+            padding: 150px 8%;
+
+            border-top: 1px solid #181818;
+        }
+
+
+        .travels-title {
+
+            font-size: clamp(55px, 9vw, 130px);
+
+            font-weight: 300;
+
+            letter-spacing: -7px;
+
+            line-height: 0.9;
+
+            margin-bottom: 100px;
+        }
+
+
+        /* ==============================
+           PHOTO GRID
+        ============================== */
+
+        .gallery {
+
+            display: grid;
+
+            grid-template-columns: repeat(2, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .photo {
+
+            height: 600px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background: #111;
+        }
+
+
+        .photo img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            opacity: 0.85;
+
+            transition:
+
+                transform 0.8s ease,
+
+                opacity 0.8s ease;
+        }
+
+
+        .photo:hover img {
+
+            transform: scale(1.04);
+
+            opacity: 1;
+        }
+
+
+        .location {
+
+            position: absolute;
+
+            left: 25px;
+
+            bottom: 25px;
+
+            font-size: 18px;
+
+            letter-spacing: 1px;
+        }
+
+
+        /* ==============================
+           FOOTER
+        ============================== */
+
+        footer {
+
+            padding: 50px 8%;
+
+            border-top: 1px solid #181818;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            color: #555;
+
+            font-size: 10px;
+
             letter-spacing: 2px;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #222;
-            margin-left: 30px;
-            font-size: 14px;
-        }
 
-        nav a:hover {
-            opacity: 0.5;
-        }
+        /* ==============================
+           MOBILE
+        ============================== */
 
-        /* HERO */
-        .hero {
-            min-height: 75vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px 20px;
-        }
+        @media (max-width: 700px) {
 
-        .hero h1 {
-            font-size: clamp(55px, 10vw, 130px);
-            font-weight: 400;
-            letter-spacing: -5px;
-        }
-
-        .hero p {
-            margin-top: 20px;
-            font-size: 18px;
-            color: #666;
-            max-width: 500px;
-            line-height: 1.6;
-        }
-
-        .button {
-            margin-top: 35px;
-            padding: 14px 28px;
-            background: #222;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 14px;
-        }
-
-        .button:hover {
-            background: #555;
-        }
-
-        /* PHOTO SECTION */
-        section {
-            padding: 100px 7%;
-        }
-
-        .section-title {
-            font-size: 40px;
-            font-weight: 400;
-            margin-bottom: 50px;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .travel-card {
-            position: relative;
-            height: 450px;
-            overflow: hidden;
-            border-radius: 5px;
-        }
-
-        .travel-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .travel-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .location {
-            position: absolute;
-            bottom: 20px;
-            left: 20px;
-            color: white;
-            font-size: 22px;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-        }
-
-        /* MAP */
-        .map-section {
-            background: #ebe9e3;
-        }
-
-        .map {
-            width: 100%;
-            height: 500px;
-            background: #d8d6cf;
-            border-radius: 8px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .map-placeholder {
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #777;
-            font-size: 18px;
-        }
-
-        .pin {
-            position: absolute;
-            width: 18px;
-            height: 18px;
-            background: #222;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .pin:hover {
-            transform: scale(1.5);
-        }
-
-        .pin::after {
-            content: "";
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: white;
-            border-radius: 50%;
-            top: 5px;
-            left: 5px;
-        }
-
-        /* ABOUT */
-        .about {
-            max-width: 800px;
-        }
-
-        .about p {
-            font-size: 20px;
-            line-height: 1.8;
-            color: #555;
-        }
-
-        /* FOOTER */
-        footer {
-            padding: 40px 7%;
-            border-top: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            color: #777;
-            font-size: 13px;
-        }
-
-        /* MOBILE */
-        @media (max-width: 800px) {
-
-            nav {
-                padding: 0 5%;
+            header {
+                padding: 25px;
             }
 
-            nav a {
-                margin-left: 15px;
+
+            .globe-wrapper {
+
+                width: 100vw;
+
+                height: 500px;
             }
+
+
+            .globe {
+
+                width: 300px;
+
+                height: 300px;
+            }
+
+
+            .europe {
+
+                width: 55px;
+                height: 30px;
+
+                top: 75px;
+                left: 145px;
+            }
+
+
+            .africa {
+
+                width: 65px;
+                height: 105px;
+
+                top: 105px;
+                left: 150px;
+            }
+
+
+            .asia {
+
+                width: 105px;
+                height: 50px;
+
+                top: 65px;
+                left: 185px;
+            }
+
+
+            .north-america {
+
+                width: 60px;
+                height: 105px;
+
+                top: 65px;
+                left: 50px;
+            }
+
+
+            .south-america {
+
+                width: 40px;
+                height: 90px;
+
+                top: 170px;
+                left: 95px;
+            }
+
+
+            .travels {
+
+                padding: 100px 6%;
+            }
+
 
             .gallery {
+
                 grid-template-columns: 1fr;
             }
 
-            .travel-card {
-                height: 400px;
+
+            .photo {
+
+                height: 450px;
             }
 
-            section {
-                padding: 70px 5%;
-            }
 
             footer {
+
                 flex-direction: column;
-                gap: 10px;
+
+                gap: 15px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- NAVIGATION -->
 
-    <nav>
-        <div class="logo">MY TRAVELS</div>
+    <!-- ==========================
+         LOGO
+    =========================== -->
 
-        <div>
-            <a href="#places">Places</a>
-            <a href="#map">Map</a>
-            <a href="#about">About</a>
+    <header>
+
+        <div class="logo">
+
+            spensier<span class="ale">ale</span>ando
+
         </div>
-    </nav>
+
+    </header>
 
 
-    <!-- HERO -->
 
-    <div class="hero">
+    <!-- ==========================
+         HERO
+    =========================== -->
 
-        <h1>Everywhere<br>I’ve Been.</h1>
-
-        <p>
-            A collection of places, memories and moments
-            from my travels around the world.
-        </p>
-
-        <a href="#places" class="button">
-            Explore my travels
-        </a>
-
-    </div>
+    <section class="hero">
 
 
-    <!-- PLACES -->
+        <div class="intro">
 
-    <section id="places">
+            a visual diary of everywhere i've been
 
-        <h2 class="section-title">Places I've Been</h2>
+        </div>
+
+
+
+        <div class="globe-wrapper">
+
+
+            <!-- WORLD -->
+
+            <div class="globe">
+
+                <div class="continent europe"></div>
+
+                <div class="continent africa"></div>
+
+                <div class="continent asia"></div>
+
+                <div class="continent north-america"></div>
+
+                <div class="continent south-america"></div>
+
+            </div>
+
+
+
+            <!-- FALLING LETTERS -->
+
+            <span class="fall a1">A</span>
+
+            <span class="fall l1">L</span>
+
+            <span class="fall e1">E</span>
+
+
+            <span class="fall a2">A</span>
+
+            <span class="fall l2">L</span>
+
+            <span class="fall e2">E</span>
+
+
+        </div>
+
+
+
+        <div class="scroll">
+
+            scroll ↓
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ==========================
+         TRAVEL SECTION
+    =========================== -->
+
+    <section class="travels">
+
+
+        <h1 class="travels-title">
+
+            places<br>
+            i've been.
+
+        </h1>
+
+
 
         <div class="gallery">
 
-            <div class="travel-card">
-                <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1200&q=80">
-                <div class="location">Santorini, Greece</div>
+
+            <div class="photo">
+
+                <img
+                    src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1600&q=90"
+                    alt="Rome"
+                >
+
+                <div class="location">
+
+                    Roma, Italia
+
+                </div>
+
             </div>
 
-            <div class="travel-card">
-                <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1200&q=80">
-                <div class="location">Rome, Italy</div>
+
+
+            <div class="photo">
+
+                <img
+                    src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1600&q=90"
+                    alt="Santorini"
+                >
+
+                <div class="location">
+
+                    Santorini, Greece
+
+                </div>
+
             </div>
 
-            <div class="travel-card">
-                <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&w=1200&q=80">
-                <div class="location">Bali, Indonesia</div>
-            </div>
 
         </div>
+
 
     </section>
 
 
-    <!-- MAP -->
 
-    <section class="map-section" id="map">
-
-        <h2 class="section-title">My Map</h2>
-
-        <div class="map">
-
-            <div class="map-placeholder">
-                My travel map will live here 🌍
-            </div>
-
-            <!-- Example pins -->
-
-            <div class="pin" style="left: 35%; top: 40%;"></div>
-
-            <div class="pin" style="left: 50%; top: 55%;"></div>
-
-            <div class="pin" style="left: 70%; top: 35%;"></div>
-
-        </div>
-
-    </section>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <div class="about">
-
-            <h2 class="section-title">About</h2>
-
-            <p>
-                I created this little corner of the internet to keep
-                track of the places I've visited, the photographs I've
-                taken and the memories I've collected along the way.
-            </p>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
+    <!-- ==========================
+         FOOTER
+    =========================== -->
 
     <footer>
 
-        <span>© 2026 My Travels</span>
+        <span>
+            SPENSIERALEANDO
+        </span>
 
-        <span>Made with curiosity ✈️</span>
+        <span>
+            © 2026
+        </span>
 
     </footer>
 
 
 </body>
+
 </html>
