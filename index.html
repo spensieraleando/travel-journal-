@@ -6,17 +6,7 @@
 
 <title>spensieraleando</title>
 
-<!-- Handwritten / graffiti-style fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Patrick+Hand&display=swap" rel="stylesheet">
-
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
 
 * {
     margin: 0;
@@ -24,489 +14,77 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
-    background: #050403;
+    background: #000;
     color: white;
+    font-family: Arial, Helvetica, sans-serif;
     overflow-x: hidden;
 }
 
 
-/* =========================================================
-   WALL
-========================================================= */
+/* =========================
+   MAIN PAGE
+========================= */
 
-.wall {
-
-    position: relative;
-
+.page {
     min-height: 100vh;
-
-    overflow: hidden;
-
-    background:
-
-        radial-gradient(
-            ellipse at 50% 20%,
-            rgba(112, 78, 38, 0.25),
-            transparent 35%
-        ),
-
-        radial-gradient(
-            ellipse at 50% 60%,
-            rgba(60, 45, 30, 0.16),
-            transparent 55%
-        ),
-
-        linear-gradient(
-            90deg,
-            #050504 0%,
-            #11100d 50%,
-            #050504 100%
-        );
+    background: #000;
+    padding-top: 80px;
 }
 
 
-/* rough wall texture */
-
-.wall::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    opacity: 0.6;
-
-    background-image:
-
-        radial-gradient(
-            circle at 10% 20%,
-            rgba(255,255,255,0.05) 0 1px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 70% 40%,
-            rgba(255,255,255,0.035) 0 1px,
-            transparent 2px
-        ),
-
-        radial-gradient(
-            circle at 30% 80%,
-            rgba(0,0,0,0.8) 0 2px,
-            transparent 5px
-        );
-
-    background-size:
-        17px 19px,
-        23px 27px,
-        31px 33px;
-
-    mix-blend-mode: overlay;
-
-    z-index: 1;
-}
-
-
-/* darker edges */
-
-.wall::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-
-        radial-gradient(
-            ellipse at center,
-            transparent 35%,
-            rgba(0,0,0,0.65) 100%
-        );
-
-    z-index: 2;
-}
-
-
-/* =========================================================
-   LAMP
-========================================================= */
-
-.lamp {
-
-    position: absolute;
-
-    top: 30px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 100px;
-
-    height: 105px;
-
-    z-index: 10;
-}
-
-
-/* wire */
-
-.lamp-wire {
-
-    position: absolute;
-
-    top: -60px;
-
-    left: 50%;
-
-    width: 5px;
-
-    height: 100px;
-
-    transform: translateX(-50%);
-
-    background: #191713;
-
-    border-radius: 5px;
-}
-
-
-/* lamp body */
-
-.lamp-shade {
-
-    position: absolute;
-
-    top: 30px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 75px;
-
-    height: 55px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #171614,
-            #39342d,
-            #141310
-        );
-
-    border-radius:
-        40px 40px 12px 12px;
-
-    border:
-        2px solid #25221e;
-
-    box-shadow:
-
-        inset 0 4px 5px rgba(255,255,255,0.08),
-
-        0 10px 20px rgba(0,0,0,0.8);
-}
-
-
-/* lamp rim */
-
-.lamp-rim {
-
-    position: absolute;
-
-    top: 76px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 92px;
-
-    height: 22px;
-
-    border-radius: 50%;
-
-    background: #2d2923;
-
-    border: 2px solid #181713;
-
-    z-index: 4;
-}
-
-
-/* bulb */
-
-.bulb {
-
-    position: absolute;
-
-    top: 80px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 30px;
-
-    height: 13px;
-
-    border-radius: 50%;
-
-    background: #ffe7ad;
-
-    box-shadow:
-
-        0 0 12px #ffe0a0,
-
-        0 0 45px #d49a43,
-
-        0 0 110px rgba(205,145,55,0.7),
-
-        0 0 230px rgba(180,120,40,0.35);
-
-    z-index: 5;
-}
-
-
-/* =========================================================
-   LAMP LIGHT ON WALL
-========================================================= */
-
-.light-cone {
-
-    position: absolute;
-
-    top: 75px;
-
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width: 900px;
-
-    height: 700px;
-
-    z-index: 3;
-
-    pointer-events: none;
-
-    background:
-
-        radial-gradient(
-            ellipse at 50% 0%,
-            rgba(255,205,120,0.32) 0%,
-            rgba(201,142,58,0.18) 25%,
-            rgba(126,85,31,0.08) 45%,
-            transparent 70%
-        );
-
-    clip-path: polygon(
-        46% 0,
-        54% 0,
-        100% 100%,
-        0 100%
-    );
-
-    filter: blur(7px);
-}
-
-
-/* =========================================================
+/* =========================
    TITLE
-========================================================= */
-
-.title-area {
-
-    position: relative;
-
-    z-index: 8;
-
-    height: 500px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: flex-end;
-
-    padding-bottom: 45px;
-}
-
+========================= */
 
 .logo {
+    text-align: center;
 
-    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
 
-    font-family: "Permanent Marker", cursive;
+    font-size: clamp(48px, 7vw, 90px);
 
-    font-size: clamp(48px, 7vw, 100px);
+    font-weight: 400;
 
-    line-height: 0.9;
+    letter-spacing: -4px;
 
-    color: #ddd4c3;
+    color: white;
 
-    transform: rotate(-3deg);
-
-    letter-spacing: -3px;
-
-    text-shadow:
-
-        2px 3px 0 rgba(0,0,0,0.8),
-
-        0 0 4px rgba(255,255,255,0.35);
-
-    filter: drop-shadow(
-        0 3px 3px rgba(0,0,0,0.8)
-    );
+    margin-bottom: 120px;
 }
 
 
-/* spray mist */
+/* ALE */
 
-.logo::before {
+.logo .ale {
 
-    content: "";
+    font-weight: 900;
 
-    position: absolute;
+    text-decoration-line: underline;
 
-    inset: -25px -35px;
+    text-decoration-color: #d62828;
 
-    background:
+    text-decoration-thickness: 5px;
 
-        radial-gradient(
-            circle,
-            rgba(220,210,195,0.18) 0 1px,
-            transparent 2px
-        );
-
-    background-size:
-        8px 9px;
-
-    opacity: 0.6;
-
-    z-index: -1;
-
-    transform: rotate(4deg);
+    text-underline-offset: 7px;
 }
 
 
-/* =========================================================
-   ALE
-========================================================= */
+/* =========================
+   FILM CONTAINER
+========================= */
 
-.ale {
-
-    color: #c9342d;
-
-    position: relative;
-
-    display: inline-block;
-
-    transform:
-        rotate(3deg)
-        scale(1.08);
-
-    text-shadow:
-
-        2px 3px 0 #631c19,
-
-        0 0 5px rgba(201,52,45,0.35);
-}
-
-
-/* red paint drip */
-
-.ale::after {
-
-    content: "";
-
-    position: absolute;
-
-    left: 48%;
-
-    top: 88%;
-
-    width: 5px;
-
-    height: 48px;
-
-    background: #c9342d;
-
-    border-radius:
-        0 0 8px 8px;
-
-    box-shadow:
-        0 0 3px rgba(201,52,45,0.5);
-}
-
-
-/* small paint splatters */
-
-.ale::before {
-
-    content: "·  •   ·";
-
-    position: absolute;
-
-    top: 70%;
-
-    left: -10px;
-
-    color: #c9342d;
-
-    font-family: Arial, sans-serif;
-
-    font-size: 15px;
-
-    letter-spacing: 8px;
-
-    transform: rotate(-8deg);
-}
-
-
-/* =========================================================
-   FILM SECTION
-========================================================= */
-
-.films {
-
-    position: relative;
-
-    z-index: 8;
-
-    width: 100%;
-
-    padding-bottom: 40px;
-}
-
-
-/* =========================================================
-   FILM
-========================================================= */
-
-.film-wrapper {
-
-    position: relative;
+.film-section {
 
     width: 100%;
 
     margin-bottom: 100px;
 }
 
+
+/* =========================
+   FILM
+========================= */
 
 .film {
 
@@ -516,44 +94,47 @@ body {
 
     margin-left: 2%;
 
-    height: 190px;
+    height: 205px;
+
+    overflow: hidden;
+
+    cursor: pointer;
 
     background:
 
         linear-gradient(
             180deg,
-            #5b3219,
-            #92552a 12%,
-            #75401f 50%,
-            #9a5a2e 88%,
-            #5c3219
+            #603418 0%,
+            #92542b 10%,
+            #78421f 50%,
+            #98592e 90%,
+            #5d3219 100%
         );
 
     border-top:
-        2px solid rgba(204,135,68,0.65);
+        2px solid rgba(220,160,90,0.45);
 
     border-bottom:
-        2px solid rgba(38,18,7,0.9);
+        2px solid rgba(30,15,6,0.9);
 
     box-shadow:
 
-        0 18px 35px rgba(0,0,0,0.85),
+        0 20px 35px rgba(0,0,0,0.8),
 
-        inset 0 8px 10px rgba(255,190,100,0.08),
+        inset 0 8px 12px rgba(255,180,100,0.07),
 
-        inset 0 -8px 12px rgba(0,0,0,0.5);
+        inset 0 -8px 12px rgba(0,0,0,0.4);
 
-    transform: rotate(-2deg);
-
-    cursor: pointer;
+    transform: rotate(-1.5deg);
 
     transition:
-        transform 0.45s ease,
-        filter 0.45s ease;
+        transform 0.4s ease;
 }
 
 
-.film-wrapper:nth-child(even) .film {
+/* alternate direction */
+
+.film-section:nth-of-type(3) .film {
 
     transform: rotate(1.5deg);
 }
@@ -563,17 +144,15 @@ body {
 
     transform:
         rotate(0deg)
-        scale(1.015);
-
-    filter: brightness(1.12);
+        scale(1.01);
 }
 
 
-/* =========================================================
-   FILM HOLES
-========================================================= */
+/* =========================
+   FILM PERFORATIONS
+========================= */
 
-.holes {
+.perforations {
 
     position: absolute;
 
@@ -587,16 +166,16 @@ body {
 
     justify-content: space-around;
 
-    z-index: 10;
+    z-index: 5;
 }
 
 
-.holes.top {
+.perforations.top {
     top: 7px;
 }
 
 
-.holes.bottom {
+.perforations.bottom {
     bottom: 7px;
 }
 
@@ -607,34 +186,34 @@ body {
 
     height: 13px;
 
-    background: #050403;
+    background: #000;
 
     border-radius: 2px;
 
     box-shadow:
-        inset 0 1px 2px rgba(255,255,255,0.06);
+        inset 0 1px 2px rgba(255,255,255,0.04);
 }
 
 
-/* =========================================================
+/* =========================
    FILM FRAMES
-========================================================= */
+========================= */
 
 .frames {
 
     position: absolute;
 
-    left: 32px;
+    left: 45px;
 
-    right: 32px;
+    right: 45px;
 
-    top: 27px;
+    top: 30px;
 
-    bottom: 27px;
+    bottom: 30px;
 
     display: flex;
 
-    gap: 7px;
+    gap: 8px;
 }
 
 
@@ -647,12 +226,12 @@ body {
     overflow: hidden;
 
     border-left:
-        2px solid rgba(227,157,83,0.5);
+        2px solid rgba(230,175,105,0.4);
 
     border-right:
-        2px solid rgba(227,157,83,0.5);
+        2px solid rgba(230,175,105,0.4);
 
-    background: #24140b;
+    background: #321b0d;
 }
 
 
@@ -666,332 +245,135 @@ body {
 
     filter:
 
-        grayscale(100%)
+        invert(1)
 
-        sepia(0.55)
+        sepia(0.7)
+
+        saturate(1.25)
 
         contrast(1.3)
 
-        brightness(0.75);
+        brightness(0.85);
 
-    opacity: 0.95;
+    opacity: 0.9;
 
     transition:
         transform 0.5s ease;
 }
 
 
-.film:hover img {
+.film:hover .frame img {
 
-    transform: scale(1.06);
+    transform: scale(1.05);
 }
 
 
-/* =========================================================
+/* =========================
    KODAK TEXT
-========================================================= */
+========================= */
 
 .kodak {
 
     position: absolute;
 
-    top: 2px;
+    right: 20px;
 
-    right: 50px;
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        rotate(90deg);
+
+    color: rgba(255,205,150,0.35);
 
     font-family: monospace;
 
     font-size: 8px;
 
-    color: rgba(25,12,4,0.75);
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   COUNTRY NAME
-========================================================= */
-
-.country {
-
-    position: relative;
-
-    margin-top: 35px;
-
-    margin-left: 8%;
-
-    color: #eee9df;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 30px;
-
-    letter-spacing: 1px;
-
-    transform: rotate(-3deg);
-
-    text-shadow:
-        0 0 2px rgba(255,255,255,0.6);
-
-    opacity: 0.92;
-}
-
-
-/* =========================================================
-   SECOND COUNTRY SLIGHTLY DIFFERENT
-========================================================= */
-
-.film-wrapper:nth-child(even) .country {
-
-    margin-left: 30%;
-
-    transform: rotate(2deg);
-}
-
-
-/* =========================================================
-   DOOR AREA
-========================================================= */
-
-.door-area {
-
-    position: relative;
-
-    z-index: 8;
-
-    height: 700px;
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: flex-end;
-
-    padding-bottom: 0;
-}
-
-
-/* door frame */
-
-.door-frame {
-
-    position: relative;
-
-    width: 340px;
-
-    height: 560px;
-
-    background: #171614;
-
-    border:
-        8px solid #25221e;
-
-    box-shadow:
-
-        0 0 0 2px #050403,
-
-        0 30px 70px rgba(0,0,0,0.95);
-}
-
-
-/* door */
-
-.door {
-
-    position: absolute;
-
-    inset: 12px;
-
-    background:
-
-        linear-gradient(
-            90deg,
-            #0b0b0a,
-            #20201e 50%,
-            #090908
-        );
-
-    border:
-        2px solid #35322e;
-
-    cursor: pointer;
-
-    transform-origin: left center;
-
-    transition:
-        transform 1.2s ease;
-
-    overflow: hidden;
-}
-
-
-/* door panels */
-
-.door::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 30px;
-
-    border:
-        2px solid #383631;
-
-    box-shadow:
-
-        inset 0 0 0 10px #11110f,
-
-        inset 0 0 0 12px #292823;
-}
-
-
-/* door handle */
-
-.handle {
-
-    position: absolute;
-
-    right: 25px;
-
-    top: 50%;
-
-    width: 13px;
-
-    height: 13px;
-
-    border-radius: 50%;
-
-    background: #8c7659;
-
-    z-index: 5;
-
-    box-shadow:
-        0 0 5px rgba(190,150,100,0.3);
-}
-
-
-/* enter */
-
-.enter {
-
-    position: absolute;
-
-    left: 50%;
-
-    top: 50%;
-
-    transform: translate(-50%, -50%);
-
-    color: #c6bfb3;
-
-    font-family: "Patrick Hand", cursive;
-
-    font-size: 18px;
-
-    text-align: center;
-
-    z-index: 5;
+    letter-spacing: 3px;
 
     white-space: nowrap;
 }
 
 
-.enter::after {
+/* =========================
+   COUNTRY NAME
+========================= */
 
-    content: "→";
+.country {
 
-    display: block;
+    margin-top: 30px;
 
-    font-family: Arial;
+    margin-left: 7%;
 
-    font-size: 30px;
+    color: white;
 
-    line-height: 20px;
+    font-family:
+        "Courier New",
+        monospace;
+
+    font-size: 24px;
+
+    letter-spacing: 2px;
+
+    text-transform: uppercase;
 }
 
 
-/* door opening */
-
-.door.open {
-
-    transform:
-        perspective(1000px)
-        rotateY(-78deg);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-.footer {
-
-    position: relative;
-
-    z-index: 8;
-
-    text-align: center;
-
-    padding: 35px;
-
-    color: #57534c;
-
-    font-family: monospace;
-
-    font-size: 9px;
-
-    letter-spacing: 4px;
-}
-
-
-/* =========================================================
+/* =========================
    MOBILE
-========================================================= */
+========================= */
 
-@media(max-width: 700px) {
+@media (max-width: 700px) {
 
-    .title-area {
-        height: 400px;
+    .page {
+        padding-top: 55px;
     }
 
     .logo {
-        font-size: 47px;
+
+        font-size: 48px;
+
+        letter-spacing: -3px;
+
+        margin-bottom: 80px;
     }
 
     .film {
+
         width: 98%;
+
         margin-left: 1%;
-        height: 150px;
+
+        height: 165px;
     }
 
     .frames {
-        left: 20px;
-        right: 20px;
-        top: 24px;
-        bottom: 24px;
+
+        left: 25px;
+
+        right: 25px;
+
+        top: 25px;
+
+        bottom: 25px;
+
+        gap: 5px;
     }
 
     .hole {
-        width: 15px;
+
+        width: 16px;
+
         height: 10px;
     }
 
     .country {
-        font-size: 25px;
-        margin-left: 7%;
-    }
 
-    .film-wrapper:nth-child(even) .country {
-        margin-left: 25%;
-    }
+        margin-left: 5%;
 
-    .door-frame {
-        width: 290px;
-        height: 500px;
+        font-size: 20px;
     }
-
 }
 
 </style>
@@ -1000,441 +382,274 @@ body {
 
 <body>
 
-<div class="wall">
+
+<div class="page">
 
 
-    <!-- =================================================
-         LAMP
-    ================================================== -->
-
-    <div class="lamp">
-
-        <div class="lamp-wire"></div>
-
-        <div class="lamp-shade"></div>
-
-        <div class="lamp-rim"></div>
-
-        <div class="bulb"></div>
-
-    </div>
-
-    <div class="light-cone"></div>
-
-
-
-    <!-- =================================================
+    <!-- =========================
          TITLE
-    ================================================== -->
+    ========================== -->
 
-    <section class="title-area">
+    <h1 class="logo">
 
-        <h1 class="logo">
+        spensier<span class="ale">ale</span>ando
 
-            spensier<span class="ale">ale</span>ando
-
-        </h1>
-
-    </section>
+    </h1>
 
 
 
-    <!-- =================================================
-         FILMS
-    ================================================== -->
+    <!-- =========================
+         ITALY
+    ========================== -->
 
-    <section class="films">
+    <section class="film-section">
 
+        <div class="film">
 
-        <!-- ================= ITALY ================= -->
-
-        <div class="film-wrapper">
-
-            <div class="film">
-
-                <div class="kodak">
-                    KODAK PORTRA 400 · 35MM · 36 EXP
-                </div>
+            <div class="kodak">
+                KODAK PORTRA 400 · 35MM · 36 EXP
+            </div>
 
 
-                <div class="holes top">
+            <div class="perforations top">
 
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="holes bottom">
-
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="frames">
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                </div>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
 
             </div>
 
 
-            <div class="country">
-                Italia
+            <div class="perforations bottom">
+
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+
+            </div>
+
+
+            <div class="frames">
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
             </div>
 
         </div>
 
 
-
-        <!-- ================= GREECE ================= -->
-
-        <div class="film-wrapper">
-
-            <div class="film">
-
-                <div class="kodak">
-                    KODAK GOLD 200 · 35MM · 36 EXP
-                </div>
-
-
-                <div class="holes top">
-
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="holes bottom">
-
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="frames">
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="country">
-                Greece
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= ENGLAND ================= -->
-
-        <div class="film-wrapper">
-
-            <div class="film">
-
-                <div class="kodak">
-                    KODAK ULTRAMAX 400 · 35MM · 36 EXP
-                </div>
-
-
-                <div class="holes top">
-
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="holes bottom">
-
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="frames">
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="country">
-                England
-            </div>
-
-        </div>
-
-
-
-        <!-- ================= JAPAN ================= -->
-
-        <div class="film-wrapper">
-
-            <div class="film">
-
-                <div class="kodak">
-                    KODAK PORTRA 400 · 35MM · 36 EXP
-                </div>
-
-
-                <div class="holes top">
-
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="holes bottom">
-
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-                    <span class="hole"></span>
-
-                </div>
-
-
-                <div class="frames">
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                    <div class="frame">
-                        <img src="https://images.unsplash.com/photo-1528360983277-13d401cdc186?auto=format&fit=crop&w=1000&q=85">
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="country">
-                Japan
-            </div>
-
+        <div class="country">
+            ITALIA
         </div>
 
     </section>
 
 
 
-    <!-- =================================================
-         DOOR
-    ================================================== -->
+    <!-- =========================
+         GREECE
+    ========================== -->
 
-    <section class="door-area">
+    <section class="film-section">
 
-        <div class="door-frame">
+        <div class="film">
 
-            <div
-                class="door"
-                id="door"
-                onclick="openDoor()"
-            >
+            <div class="kodak">
+                KODAK GOLD 200 · 35MM · 36 EXP
+            </div>
 
-                <div class="handle"></div>
 
-                <div class="enter">
-                    ENTER
+            <div class="perforations top">
+
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+
+            </div>
+
+
+            <div class="perforations bottom">
+
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+
+            </div>
+
+
+            <div class="frames">
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1000&q=85">
                 </div>
 
             </div>
 
         </div>
 
+
+        <div class="country">
+            GREECE
+        </div>
+
     </section>
 
 
 
-    <footer class="footer">
+    <!-- =========================
+         ENGLAND
+    ========================== -->
 
-        SPENSIERALEANDO
-        &nbsp; · &nbsp;
-        TRAVEL ARCHIVE
-        &nbsp; · &nbsp;
-        35MM
+    <section class="film-section">
 
-    </footer>
+        <div class="film">
+
+            <div class="kodak">
+                KODAK ULTRAMAX 400 · 35MM · 36 EXP
+            </div>
+
+
+            <div class="perforations top">
+
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+
+            </div>
+
+
+            <div class="perforations bottom">
+
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+                <span class="hole"></span>
+
+            </div>
+
+
+            <div class="frames">
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
+                <div class="frame">
+                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1000&q=85">
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="country">
+            ENGLAND
+        </div>
+
+    </section>
 
 
 </div>
-
-
-
-<script>
-
-/* =========================================================
-   DOOR
-========================================================= */
-
-function openDoor() {
-
-    const door =
-        document.getElementById("door");
-
-    door.classList.toggle("open");
-
-}
-
-</script>
 
 </body>
 </html>
