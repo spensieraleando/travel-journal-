@@ -18,18 +18,17 @@ body {
     background: #000;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
-    overflow-x: hidden;
 }
 
 
 /* =========================
-   MAIN PAGE
+   PAGE
 ========================= */
 
 .page {
     min-height: 100vh;
+    padding: 75px 7% 100px;
     background: #000;
-    padding-top: 80px;
 }
 
 
@@ -40,27 +39,19 @@ body {
 .logo {
     text-align: center;
 
-    font-family: Arial, Helvetica, sans-serif;
-
-    font-size: clamp(48px, 7vw, 90px);
+    font-size: clamp(48px, 7vw, 82px);
 
     font-weight: 400;
 
     letter-spacing: -4px;
 
-    color: white;
-
     margin-bottom: 120px;
 }
 
-
-/* ALE */
-
 .logo .ale {
-
     font-weight: 900;
 
-    text-decoration-line: underline;
+    text-decoration: underline;
 
     text-decoration-color: #d62828;
 
@@ -71,171 +62,178 @@ body {
 
 
 /* =========================
-   FILM CONTAINER
+   GALLERY
 ========================= */
 
-.film-section {
+.gallery {
 
-    width: 100%;
+    max-width: 1100px;
 
-    margin-bottom: 100px;
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    column-gap: 110px;
+
+    row-gap: 130px;
 }
 
 
 /* =========================
-   FILM
+   COUNTRY CARD
 ========================= */
 
-.film {
+.country-card {
 
     position: relative;
 
-    width: 96%;
-
-    margin-left: 2%;
-
-    height: 205px;
-
-    overflow: hidden;
-
     cursor: pointer;
 
-    background:
-
-        linear-gradient(
-            180deg,
-            #603418 0%,
-            #92542b 10%,
-            #78421f 50%,
-            #98592e 90%,
-            #5d3219 100%
-        );
-
-    border-top:
-        2px solid rgba(220,160,90,0.45);
-
-    border-bottom:
-        2px solid rgba(30,15,6,0.9);
-
-    box-shadow:
-
-        0 20px 35px rgba(0,0,0,0.8),
-
-        inset 0 8px 12px rgba(255,180,100,0.07),
-
-        inset 0 -8px 12px rgba(0,0,0,0.4);
-
-    transform: rotate(-1.5deg);
+    width: 100%;
 
     transition:
         transform 0.4s ease;
 }
 
 
-/* alternate direction */
+/* slight different positioning */
 
-.film-section:nth-of-type(3) .film {
+.country-card:nth-child(1) {
+    transform: rotate(-2deg);
+}
 
+.country-card:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.country-card:nth-child(3) {
     transform: rotate(1.5deg);
 }
 
+.country-card:nth-child(4) {
+    transform: rotate(-2.5deg);
+}
 
-.film:hover {
 
+.country-card:hover {
     transform:
         rotate(0deg)
-        scale(1.01);
+        translateY(-10px);
 }
 
 
 /* =========================
-   FILM PERFORATIONS
+   PHOTO STACK
 ========================= */
 
-.perforations {
+.photo-stack {
+
+    position: relative;
+
+    width: 100%;
+
+    aspect-ratio: 4 / 3;
+
+}
+
+
+/* the layers behind the main photo */
+
+.photo-stack::before,
+.photo-stack::after {
+
+    content: "";
 
     position: absolute;
 
-    left: 0;
+    inset: 0;
 
-    right: 0;
+    background: #e8e2d8;
 
-    height: 17px;
+    z-index: 0;
 
-    display: flex;
-
-    justify-content: space-around;
-
-    z-index: 5;
 }
 
 
-.perforations.top {
-    top: 7px;
-}
+/* first paper/photo */
 
+.photo-stack::before {
 
-.perforations.bottom {
-    bottom: 7px;
-}
-
-
-.hole {
-
-    width: 25px;
-
-    height: 13px;
-
-    background: #000;
-
-    border-radius: 2px;
+    transform:
+        translate(13px, 13px)
+        rotate(3deg);
 
     box-shadow:
-        inset 0 1px 2px rgba(255,255,255,0.04);
+        0 12px 25px rgba(0,0,0,0.7);
+}
+
+
+/* second paper/photo */
+
+.photo-stack::after {
+
+    transform:
+        translate(-12px, 8px)
+        rotate(-4deg);
+
+    box-shadow:
+        0 12px 25px rgba(0,0,0,0.6);
+
+    z-index: 1;
 }
 
 
 /* =========================
-   FILM FRAMES
+   EXTRA LAYER
 ========================= */
 
-.frames {
+.stack-layer {
 
     position: absolute;
 
-    left: 45px;
+    inset: 0;
 
-    right: 45px;
+    background: #cfc8bb;
 
-    top: 30px;
+    z-index: 0;
 
-    bottom: 30px;
+    transform:
+        translate(6px, 20px)
+        rotate(5deg);
 
-    display: flex;
-
-    gap: 8px;
+    box-shadow:
+        0 15px 30px rgba(0,0,0,0.7);
 }
 
 
-.frame {
+/* =========================
+   MAIN PHOTO
+========================= */
 
-    flex: 1;
+.main-photo {
 
-    height: 100%;
+    position: absolute;
 
-    overflow: hidden;
+    inset: 0;
 
-    border-left:
-        2px solid rgba(230,175,105,0.4);
+    z-index: 3;
 
-    border-right:
-        2px solid rgba(230,175,105,0.4);
+    background: #222;
 
-    background: #321b0d;
+    padding: 7px;
+
+    box-shadow:
+
+        0 20px 40px rgba(0,0,0,0.8),
+
+        0 3px 8px rgba(0,0,0,0.6);
 }
 
 
-.frame img {
+.main-photo img {
 
     width: 100%;
 
@@ -243,56 +241,25 @@ body {
 
     object-fit: cover;
 
+    display: block;
+
     filter:
-
-        invert(1)
-
-        sepia(0.7)
-
-        saturate(1.25)
-
-        contrast(1.3)
-
-        brightness(0.85);
-
-    opacity: 0.9;
+        saturate(0.8)
+        contrast(1.05);
 
     transition:
-        transform 0.5s ease;
+        transform 0.5s ease,
+        filter 0.5s ease;
 }
 
 
-.film:hover .frame img {
+.country-card:hover .main-photo img {
 
-    transform: scale(1.05);
-}
+    transform: scale(1.025);
 
-
-/* =========================
-   KODAK TEXT
-========================= */
-
-.kodak {
-
-    position: absolute;
-
-    right: 20px;
-
-    top: 50%;
-
-    transform:
-        translateY(-50%)
-        rotate(90deg);
-
-    color: rgba(255,205,150,0.35);
-
-    font-family: monospace;
-
-    font-size: 8px;
-
-    letter-spacing: 3px;
-
-    white-space: nowrap;
+    filter:
+        saturate(1)
+        contrast(1.08);
 }
 
 
@@ -300,23 +267,48 @@ body {
    COUNTRY NAME
 ========================= */
 
-.country {
+.country-name {
 
-    margin-top: 30px;
+    position: relative;
 
-    margin-left: 7%;
+    z-index: 5;
 
-    color: white;
+    margin-top: 38px;
+
+    text-align: center;
 
     font-family:
         "Courier New",
         monospace;
 
-    font-size: 24px;
+    font-size: 22px;
 
-    letter-spacing: 2px;
+    letter-spacing: 4px;
+
+    color: white;
 
     text-transform: uppercase;
+}
+
+
+/* little handwritten feeling */
+
+.country-name::before {
+
+    content: "—";
+
+    margin-right: 10px;
+
+    color: #777;
+}
+
+.country-name::after {
+
+    content: "—";
+
+    margin-left: 10px;
+
+    color: #777;
 }
 
 
@@ -327,52 +319,36 @@ body {
 @media (max-width: 700px) {
 
     .page {
-        padding-top: 55px;
+        padding: 50px 7% 80px;
     }
 
     .logo {
 
         font-size: 48px;
 
-        letter-spacing: -3px;
-
-        margin-bottom: 80px;
+        margin-bottom: 90px;
     }
 
-    .film {
+    .gallery {
 
-        width: 98%;
+        grid-template-columns: 1fr;
 
-        margin-left: 1%;
+        gap: 100px;
 
-        height: 165px;
+        max-width: 500px;
     }
 
-    .frames {
+    .country-card:nth-child(1),
+    .country-card:nth-child(2),
+    .country-card:nth-child(3),
+    .country-card:nth-child(4) {
 
-        left: 25px;
-
-        right: 25px;
-
-        top: 25px;
-
-        bottom: 25px;
-
-        gap: 5px;
+        transform: rotate(0deg);
     }
 
-    .hole {
+    .country-name {
 
-        width: 16px;
-
-        height: 10px;
-    }
-
-    .country {
-
-        margin-left: 5%;
-
-        font-size: 20px;
+        font-size: 19px;
     }
 }
 
@@ -399,257 +375,123 @@ body {
 
 
     <!-- =========================
-         ITALY
+         COUNTRIES
     ========================== -->
 
-    <section class="film-section">
-
-        <div class="film">
-
-            <div class="kodak">
-                KODAK PORTRA 400 · 35MM · 36 EXP
-            </div>
+    <div class="gallery">
 
 
-            <div class="perforations top">
+        <!-- ITALIA -->
 
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
+        <div class="country-card">
+
+            <div class="photo-stack">
+
+                <div class="stack-layer"></div>
+
+                <div class="main-photo">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1200&q=90"
+                        alt="Italy"
+                    >
+
+                </div>
 
             </div>
 
-
-            <div class="perforations bottom">
-
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-
-            </div>
-
-
-            <div class="frames">
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
+            <div class="country-name">
+                Italia
             </div>
 
         </div>
 
 
-        <div class="country">
-            ITALIA
-        </div>
 
-    </section>
+        <!-- GREECE -->
 
+        <div class="country-card">
 
+            <div class="photo-stack">
 
-    <!-- =========================
-         GREECE
-    ========================== -->
+                <div class="stack-layer"></div>
 
-    <section class="film-section">
+                <div class="main-photo">
 
-        <div class="film">
+                    <img
+                        src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1200&q=90"
+                        alt="Greece"
+                    >
 
-            <div class="kodak">
-                KODAK GOLD 200 · 35MM · 36 EXP
-            </div>
-
-
-            <div class="perforations top">
-
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
+                </div>
 
             </div>
 
-
-            <div class="perforations bottom">
-
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-
-            </div>
-
-
-            <div class="frames">
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1530841377377-3ff06c0ca713?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1603565816030-6b389eeb23cb?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
+            <div class="country-name">
+                Greece
             </div>
 
         </div>
 
 
-        <div class="country">
-            GREECE
-        </div>
 
-    </section>
+        <!-- ENGLAND -->
 
+        <div class="country-card">
 
+            <div class="photo-stack">
 
-    <!-- =========================
-         ENGLAND
-    ========================== -->
+                <div class="stack-layer"></div>
 
-    <section class="film-section">
+                <div class="main-photo">
 
-        <div class="film">
+                    <img
+                        src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=90"
+                        alt="England"
+                    >
 
-            <div class="kodak">
-                KODAK ULTRAMAX 400 · 35MM · 36 EXP
-            </div>
-
-
-            <div class="perforations top">
-
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
+                </div>
 
             </div>
 
-
-            <div class="perforations bottom">
-
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-                <span class="hole"></span>
-
-            </div>
-
-
-            <div class="frames">
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
-                <div class="frame">
-                    <img src="https://images.unsplash.com/photo-1533929736458-ca588d08c8be?auto=format&fit=crop&w=1000&q=85">
-                </div>
-
+            <div class="country-name">
+                England
             </div>
 
         </div>
 
 
-        <div class="country">
-            ENGLAND
+
+        <!-- JAPAN -->
+
+        <div class="country-card">
+
+            <div class="photo-stack">
+
+                <div class="stack-layer"></div>
+
+                <div class="main-photo">
+
+                    <img
+                        src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=90"
+                        alt="Japan"
+                    >
+
+                </div>
+
+            </div>
+
+            <div class="country-name">
+                Japan
+            </div>
+
         </div>
 
-    </section>
 
+    </div>
 
 </div>
+
 
 </body>
 </html>
