@@ -7,8 +7,8 @@
 
     <title>Spensieraleando</title>
 
-    <!-- Marker font for title + Oswald for description -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!-- Marker / handwritten style -->
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <style>
 
@@ -19,9 +19,43 @@
         }
 
         body {
-            background: #202020;
-            color: white;
+            color: #174ea6;
             font-family: 'Permanent Marker', cursive;
+
+            /* Lined paper background */
+            background-color: #fdfcf7;
+
+            background-image:
+                repeating-linear-gradient(
+                    to bottom,
+                    transparent 0px,
+                    transparent 31px,
+                    #c9d8ea 32px,
+                    transparent 33px
+                );
+
+            position: relative;
+        }
+
+
+        /* =========================
+           RED NOTEBOOK MARGIN
+        ========================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+
+            top: 0;
+            bottom: 0;
+            left: 70px;
+
+            width: 2px;
+
+            background: #e4a0a0;
+
+            pointer-events: none;
+            z-index: 0;
         }
 
 
@@ -33,6 +67,8 @@
             position: relative;
             width: 100%;
             padding-top: 55px;
+
+            z-index: 1;
         }
 
 
@@ -55,7 +91,7 @@
         }
 
         .navigation a {
-            color: white;
+            color: #174ea6;
             text-decoration: none;
         }
 
@@ -71,13 +107,13 @@
         .site-title {
             text-align: center;
 
-            font-family: 'Permanent Marker', cursive;
-
             font-size: 52px;
             font-weight: 400;
             letter-spacing: 1px;
 
             margin-bottom: 35px;
+
+            color: #174ea6;
         }
 
 
@@ -86,23 +122,22 @@
         ========================= */
 
         .description {
-            width: calc(100% - 2in);
-            max-width: none;
+            max-width: 900px;
 
             margin: 0 auto 75px;
 
-            padding: 0;
+            padding: 0 30px;
         }
 
         .description p {
-            font-family: 'Oswald', sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
 
-            font-size: 15px;
-            line-height: 1.65;
+            font-size: 14px;
+            line-height: 1.7;
 
-            font-weight: 300;
+            font-weight: 400;
 
-            color: #d0d0d0;
+            color: #174ea6;
 
             text-align: left;
         }
@@ -156,6 +191,11 @@
 
         @media (max-width: 900px) {
 
+            body::before {
+                left: 25px;
+            }
+
+
             .navigation {
                 position: relative;
 
@@ -177,17 +217,16 @@
 
 
             .description {
-                width: calc(100% - 50px);
+                max-width: 100%;
 
                 margin-bottom: 50px;
 
-                padding: 0;
+                padding: 0 25px;
             }
 
 
             .description p {
                 font-size: 13px;
-                line-height: 1.6;
             }
 
 
