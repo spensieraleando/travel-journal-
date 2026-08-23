@@ -7,7 +7,7 @@
 
     <title>Spensieraleando</title>
 
-    <!-- Marker / handwritten style -->
+    <!-- Marker / handwritten font -->
     <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <style>
@@ -19,19 +19,20 @@
         }
 
         body {
-            color: #174ea6;
+            background-color: #000000;
+
+            color: #ffffff;
+
             font-family: 'Permanent Marker', cursive;
 
-            /* Lined paper background */
-            background-color: #fdfcf7;
-
+            /* White notebook lines */
             background-image:
                 repeating-linear-gradient(
                     to bottom,
-                    transparent 0px,
-                    transparent 31px,
-                    #c9d8ea 32px,
-                    transparent 33px
+                    #000000 0px,
+                    #000000 31px,
+                    #ffffff 32px,
+                    #000000 33px
                 );
 
             position: relative;
@@ -44,6 +45,7 @@
 
         body::before {
             content: "";
+
             position: fixed;
 
             top: 0;
@@ -52,10 +54,11 @@
 
             width: 2px;
 
-            background: #e4a0a0;
+            background: #ff3030;
 
             pointer-events: none;
-            z-index: 0;
+
+            z-index: 10;
         }
 
 
@@ -65,38 +68,12 @@
 
         header {
             position: relative;
+
             width: 100%;
-            padding-top: 55px;
+
+            padding-top: 70px;
 
             z-index: 1;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        .navigation {
-            position: absolute;
-            top: 60px;
-            left: 70px;
-
-            display: grid;
-            grid-template-columns: auto auto;
-            column-gap: 35px;
-            row-gap: 2px;
-
-            font-size: 20px;
-            line-height: 1.25;
-        }
-
-        .navigation a {
-            color: #174ea6;
-            text-decoration: none;
-        }
-
-        .navigation a:hover {
-            opacity: 0.6;
         }
 
 
@@ -105,15 +82,22 @@
         ========================= */
 
         .site-title {
+
             text-align: center;
 
-            font-size: 52px;
+            font-family: 'Permanent Marker', cursive;
+
+            font-size: 58px;
+
             font-weight: 400;
-            letter-spacing: 1px;
 
-            margin-bottom: 35px;
+            letter-spacing: 3px;
 
-            color: #174ea6;
+            color: #ffffff;
+
+            margin-bottom: 45px;
+
+            line-height: 1.2;
         }
 
 
@@ -122,22 +106,30 @@
         ========================= */
 
         .description {
-            max-width: 900px;
 
-            margin: 0 auto 75px;
+            width: calc(100% - 140px);
 
-            padding: 0 30px;
+            margin: 0 70px 75px;
+
+            padding: 0;
         }
 
-        .description p {
-            font-family: Arial, Helvetica, sans-serif;
 
-            font-size: 14px;
-            line-height: 1.7;
+        .description p {
+
+            font-family: 'Permanent Marker', cursive;
+
+            color: #ffffff;
+
+            font-size: 18px;
 
             font-weight: 400;
 
-            color: #174ea6;
+            letter-spacing: 1.4px;
+
+            word-spacing: 3px;
+
+            line-height: 33px;
 
             text-align: left;
         }
@@ -148,6 +140,7 @@
         ========================= */
 
         .photo-grid {
+
             width: calc(100% - 85px);
 
             margin: 0 auto;
@@ -161,7 +154,9 @@
 
 
         .photo {
+
             width: 100%;
+
             height: 480px;
 
             overflow: hidden;
@@ -169,7 +164,9 @@
 
 
         .photo img {
+
             width: 100%;
+
             height: 100%;
 
             object-fit: cover;
@@ -181,6 +178,7 @@
 
 
         .photo:hover img {
+
             transform: scale(1.02);
         }
 
@@ -196,41 +194,38 @@
             }
 
 
-            .navigation {
-                position: relative;
-
-                top: auto;
-                left: auto;
-
-                margin-left: 30px;
-                margin-bottom: 50px;
-
-                font-size: 18px;
-            }
-
-
             .site-title {
+
                 font-size: 40px;
 
                 padding: 0 20px;
+
+                letter-spacing: 2px;
             }
 
 
             .description {
-                max-width: 100%;
 
-                margin-bottom: 50px;
+                width: calc(100% - 50px);
 
-                padding: 0 25px;
+                margin: 0 25px 50px;
             }
 
 
             .description p {
-                font-size: 13px;
+
+                font-size: 15px;
+
+                letter-spacing: 1px;
+
+                word-spacing: 2px;
+
+                line-height: 33px;
             }
 
 
             .photo-grid {
+
                 width: calc(100% - 30px);
 
                 grid-template-columns: 1fr;
@@ -238,6 +233,7 @@
 
 
             .photo {
+
                 height: 400px;
             }
 
@@ -255,24 +251,6 @@
     ========================= -->
 
     <header>
-
-
-        <!-- NAVIGATION -->
-
-        <nav class="navigation">
-
-            <a href="#">STREET/DOCUMENTARY</a>
-            <a href="#">EVENT PHOTOGRAPHY</a>
-
-            <a href="#">OTHER</a>
-            <a href="#">YOUTUBE</a>
-
-            <a href="#">BLOG</a>
-            <a href="#">MONOGRAPH</a>
-
-            <a href="#">ABOUT/CONTACT</a>
-
-        </nav>
 
 
         <!-- TITLE -->
@@ -328,14 +306,18 @@
             <!-- FIRST PHOTO -->
 
             <div class="photo">
+
                 <img src="Image1.jpg" alt="Photography">
+
             </div>
 
 
             <!-- SECOND PHOTO -->
 
             <div class="photo">
+
                 <img src="Image2.jpg" alt="Photography">
+
             </div>
 
 
