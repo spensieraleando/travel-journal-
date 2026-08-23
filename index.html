@@ -7,7 +7,7 @@
   <title>Spensieraleando</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500&family=Rock+Salt&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500&family=Permanent+Marker&display=swap');
 
     * {
       box-sizing: border-box;
@@ -17,6 +17,7 @@
       margin: 0;
       background: #202020;
       color: #f2f0e9;
+      font-family: 'Archivo Narrow', sans-serif;
       overflow-x: hidden;
     }
 
@@ -26,32 +27,23 @@
       position: relative;
     }
 
-
-    /* =========================================
-       MAIN WORD
-       ========================================= */
+    /* MAIN WORD */
 
     .main-word {
       position: relative;
       display: inline-block;
-
       margin-top: 45px;
       margin-left: 35px;
 
       font-family: 'Archivo Narrow', sans-serif;
       font-size: clamp(70px, 11vw, 170px);
       font-weight: 500;
-
       letter-spacing: -5px;
       line-height: 0.9;
-
       white-space: nowrap;
     }
 
-
-    /* =========================================
-       THE EXISTING A
-       ========================================= */
+    /* THE A */
 
     .a-circle {
       position: relative;
@@ -60,7 +52,6 @@
 
     .a-circle::after {
       content: "";
-
       position: absolute;
 
       width: 1.05em;
@@ -75,10 +66,7 @@
       transform: rotate(-8deg);
     }
 
-
-    /* =========================================
-       UNDERLINE THE EXISTING A + LE
-       ========================================= */
+    /* RED MARKER UNDERLINE */
 
     .ale {
       text-decoration: underline;
@@ -87,10 +75,7 @@
       text-underline-offset: 7px;
     }
 
-
-    /* =========================================
-       "ME"
-       ========================================= */
+    /* HANDWRITTEN "ME" */
 
     .me {
       position: absolute;
@@ -99,17 +84,13 @@
       top: 245px;
 
       color: #d62828;
-
-      font-family: 'Rock Salt', cursive;
-      font-size: 27px;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 30px;
 
       transform: rotate(-7deg);
     }
 
-
-    /* =========================================
-       HAND-DRAWN ARROW
-       ========================================= */
+    /* HAND DRAWN ARROW */
 
     .arrow {
       position: absolute;
@@ -130,7 +111,6 @@
       content: "";
 
       position: absolute;
-
       right: -4px;
       top: -7px;
 
@@ -143,35 +123,26 @@
       transform: rotate(35deg);
     }
 
-
-    /* =========================================
-       TOP RIGHT ENGLISH DESCRIPTION
-       ========================================= */
+    /* TOP RIGHT DESCRIPTION */
 
     .definition {
       position: absolute;
 
-      top: 45px;
-      right: 60px;
+      top: 55px;
+      right: 65px;
 
-      width: 360px;
+      width: 330px;
 
       color: #d62828;
 
-      font-family: 'Rock Salt', cursive;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 18px;
+      line-height: 1.45;
 
-      font-size: 15px;
-      line-height: 1.8;
-
-      text-align: left;
-
-      transform: rotate(-2deg);
+      transform: rotate(2deg);
     }
 
-
-    /* =========================================
-       SMALL HANDWRITTEN NOTE
-       ========================================= */
+    /* SMALL RED HANDWRITTEN NOTE */
 
     .note {
       position: absolute;
@@ -181,16 +152,13 @@
 
       color: #d62828;
 
-      font-family: 'Rock Salt', cursive;
-      font-size: 17px;
+      font-family: 'Permanent Marker', cursive;
+      font-size: 20px;
 
       transform: rotate(-4deg);
     }
 
-
-    /* =========================================
-       MOBILE
-       ========================================= */
+    /* MOBILE */
 
     @media (max-width: 800px) {
 
@@ -201,22 +169,18 @@
       .main-word {
         margin-left: 0;
         margin-top: 25px;
-
         font-size: 17vw;
       }
 
       .definition {
         position: relative;
-
         top: auto;
         right: auto;
 
+        margin-top: 55px;
         width: 90%;
 
-        margin-top: 60px;
-
-        font-size: 14px;
-        line-height: 1.7;
+        text-align: left;
       }
 
       .arrow {
@@ -225,80 +189,59 @@
 
       .me {
         position: relative;
-
         left: auto;
         top: auto;
 
         display: inline-block;
-
         margin-left: 55%;
         margin-top: 25px;
       }
 
       .note {
         position: relative;
-
         left: auto;
         top: auto;
 
         margin-top: 50px;
       }
     }
-
   </style>
 </head>
-
 
 <body>
 
   <main class="page">
 
-
-    <!-- =====================================
-         MAIN TITLE
-         ===================================== -->
-
+    <!-- MAIN TITLE -->
     <div class="main-word">
       SPENSI<span class="a-circle">A</span><span class="ale">LE</span>ANDO
     </div>
 
 
-    <!-- =====================================
-         RED "ME"
-         ===================================== -->
-
+    <!-- RED "ME" -->
     <div class="me">
       ME
     </div>
 
 
-    <!-- =====================================
-         HAND-DRAWN ARROW
-         ===================================== -->
-
+    <!-- HAND-DRAWN ARROW -->
     <div class="arrow"></div>
 
 
-    <!-- =====================================
-         ENGLISH DESCRIPTION
-         ===================================== -->
-
+    <!-- ENGLISH EXPLANATION -->
     <div class="definition">
-      A LITTLE COLLECTION OF PLACES
-      I'VE BEEN, MEMORIES I'VE MADE,
-      AND ADVENTURES I NEVER WANT
-      TO FORGET.
+      The verb <i>spensierare</i> means
+      to relieve someone of worries,
+      to give relief to the mind,
+      or to distract someone from
+      sad, heavy, or boring thoughts.
     </div>
 
 
-    <!-- =====================================
-         SMALL NOTE
-         ===================================== -->
-
+    <!-- SMALL NOTE -->
     <div class="note">
-      a state of lightness
+      a state of lightness ✦
     </div>
-
 
   </main>
 
