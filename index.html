@@ -1,304 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Spensieraleando</title>
-
-    <!-- Font similar to the example website -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            background: #202020;
-            color: white;
-            font-family: 'Oswald', sans-serif;
-        }
-
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            position: relative;
-            width: 100%;
-            padding-top: 55px;
-        }
-
-
-        /* =========================
-           NAVIGATION
-        ========================= */
-
-        .navigation {
-            position: absolute;
-            top: 60px;
-            left: 70px;
-
-            display: grid;
-            grid-template-columns: auto auto;
-            column-gap: 35px;
-            row-gap: 2px;
-
-            font-size: 20px;
-            line-height: 1.25;
-        }
-
-        .navigation a {
-            color: white;
-            text-decoration: none;
-        }
-
-        .navigation a:hover {
-            opacity: 0.6;
-        }
-
-
-        /* =========================
-           TITLE
-        ========================= */
-
-        .site-title {
-            text-align: center;
-
-            font-size: 52px;
-            font-weight: 600;
-            letter-spacing: 1px;
-
-            margin-bottom: 35px;
-        }
-
-
-        /* =========================
-           DESCRIPTION
-        ========================= */
-
-        .description {
-            max-width: 900px;
-
-            margin: 0 auto 75px;
-
-            padding: 0 30px;
-        }
-
-        .description p {
-            font-family: Arial, Helvetica, sans-serif;
-
-            font-size: 14px;
-            line-height: 1.7;
-
-            font-weight: 400;
-
-            color: #d0d0d0;
-
-            text-align: left;
-        }
-
-
-        /* =========================
-           PHOTOGRAPHY AREA
-        ========================= */
-
-        .photo-grid {
-            width: calc(100% - 85px);
-
-            margin: 0 auto;
-
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 3px;
-        }
-
-
-        .photo {
-            width: 100%;
-            height: 480px;
-
-            overflow: hidden;
-        }
-
-
-        .photo img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            display: block;
-
-            transition: transform 0.5s ease;
-        }
-
-
-        .photo:hover img {
-            transform: scale(1.02);
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 900px) {
-
-            .navigation {
-                position: relative;
-
-                top: auto;
-                left: auto;
-
-                margin-left: 30px;
-                margin-bottom: 50px;
-
-                font-size: 18px;
-            }
-
-
-            .site-title {
-                font-size: 40px;
-
-                padding: 0 20px;
-            }
-
-
-            .description {
-                max-width: 100%;
-
-                margin-bottom: 50px;
-
-                padding: 0 25px;
-            }
-
-
-            .description p {
-                font-size: 13px;
-            }
-
-
-            .photo-grid {
-                width: calc(100% - 30px);
-
-                grid-template-columns: 1fr;
-            }
-
-
-            .photo {
-                height: 400px;
-            }
-
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Travels</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #f7f4ed;
+      color: #222;
+      font-family: 'Permanent Marker', cursive;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 55px 65px;
+      position: relative;
+    }
+
+    /* MAIN TITLE */
+    .title {
+      font-size: 58px;
+      line-height: 1;
+      display: inline-block;
+      transform: rotate(-2deg);
+      margin: 0;
+    }
+
+    /* LITTLE DESCRIPTION IN THE TOP RIGHT */
+    .description {
+      position: absolute;
+      top: 58px;
+      right: 65px;
+
+      width: 310px;
+
+      font-size: 17px;
+      line-height: 1.45;
+      text-align: right;
+
+      transform: rotate(2deg);
+    }
+
+    /* SMALL HAND-DRAWN LINE UNDER THE TITLE */
+    .little-line {
+      width: 145px;
+      height: 3px;
+      background: #222;
+
+      margin-top: 12px;
+
+      transform: rotate(-3deg);
+      border-radius: 50%;
+    }
+
+    /* SPACE WHERE THE TRAVEL CONTENT WILL GO LATER */
+    .content {
+      margin-top: 100px;
+    }
+
+    @media (max-width: 700px) {
+
+      .page {
+        padding: 35px 25px;
+      }
+
+      .title {
+        font-size: 45px;
+      }
+
+      .description {
+        position: static;
+        width: 260px;
+        margin-top: 35px;
+        text-align: left;
+        transform: rotate(1deg);
+      }
+
+      .little-line {
+        margin-top: 10px;
+      }
+
+      .content {
+        margin-top: 60px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <div class="page">
 
-    <!-- =========================
-         HEADER
-    ========================= -->
+    <!-- TITLE -->
+    <h1 class="title">MY TRAVELS</h1>
 
-    <header>
-
-
-        <!-- NAVIGATION -->
-
-        <nav class="navigation">
-
-            <a href="#">STREET/DOCUMENTARY</a>
-            <a href="#">EVENT PHOTOGRAPHY</a>
-
-            <a href="#">OTHER</a>
-            <a href="#">YOUTUBE</a>
-
-            <a href="#">BLOG</a>
-            <a href="#">MONOGRAPH</a>
-
-            <a href="#">ABOUT/CONTACT</a>
-
-        </nav>
+    <div class="little-line"></div>
 
 
-        <!-- TITLE -->
-
-        <h1 class="site-title">
-            SPENSIERALEANDO
-        </h1>
-
-
-        <!-- DESCRIPTION -->
-
-        <section class="description">
-
-            <p>
-                This is a catalogue of some of the streets around the world from my lenses.
-                Street photography to me is not ‘taking pictures of random people’ as some
-                might think and say, my intent is to unveil the idea that some might have
-                about how you need a studio, planned poses, the perfect makeup, outfit,
-                hair to make a ‘good picture’, but instead sometimes just paying attention
-                to the unnoticed details of our everyday life such as shades in the walls
-                of the houses you walk by every day, the light that reflects on the window
-                of the shop you are about to enter, the shadows of the people created on
-                the sidewalk from the sunset, and my favourite emotions and expressions,
-                which don’t necessarily need to be shown by capturing people’s faces,
-                it could be from their body language, or the hand gestures they are making
-                when speaking to someone, the way someone’s coat is folding from a tight
-                hug they’re getting from someone, a child’s finger pointing at a bird, and
-                I could go on and on, but these are a few examples not only how you could
-                get a ‘cool or wholesome picture’ to post on Instagram, but also how you
-                can connect to the world around you, to the city you are visiting, to its
-                buildings, the skies, the clouds, the cigarettes on the floor marked with
-                someone’s lipstick, someone’s tattoo, but most importantly the people around
-                you, without needing a one to one interaction, as we all know how hard it can
-                be to speak to ‘strangers’. I think just noticing them is enough, your eyes
-                are a lens through which you can admire and appreciate without the need for
-                words, just like a camera.
-            </p>
-
-        </section>
-
-    </header>
+    <!-- ENGLISH DESCRIPTION -->
+    <div class="description">
+      A little collection of places I've been,
+      memories I've made, and adventures
+      I never want to forget.
+    </div>
 
 
-    <!-- =========================
-         PHOTOGRAPHY
-    ========================= -->
+    <!-- THE REST OF THE PAGE WILL GO HERE LATER -->
+    <div class="content">
+    </div>
 
-    <main>
-
-        <div class="photo-grid">
-
-
-            <!-- FIRST PHOTO -->
-
-            <div class="photo">
-                <img src="Image1.jpg" alt="Photography">
-            </div>
-
-
-            <!-- SECOND PHOTO -->
-
-            <div class="photo">
-                <img src="Image2.jpg" alt="Photography">
-            </div>
-
-
-        </div>
-
-    </main>
-
+  </div>
 
 </body>
 </html>
