@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,10 +6,17 @@
 
     <title>Spensieraleando</title>
 
-    <!-- Marker / handwritten font -->
-    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <style>
+
+        /* =========================
+           RESET
+        ========================= */
 
         * {
             margin: 0;
@@ -18,47 +24,16 @@
             box-sizing: border-box;
         }
 
-        body {
-            background-color: #000000;
-
-            color: #ffffff;
-
-            font-family: 'Permanent Marker', cursive;
-
-            /* White notebook lines */
-            background-image:
-                repeating-linear-gradient(
-                    to bottom,
-                    #000000 0px,
-                    #000000 31px,
-                    #ffffff 32px,
-                    #000000 33px
-                );
-
-            position: relative;
-        }
-
 
         /* =========================
-           RED NOTEBOOK MARGIN
+           BODY
         ========================= */
 
-        body::before {
-            content: "";
-
-            position: fixed;
-
-            top: 0;
-            bottom: 0;
-            left: 70px;
-
-            width: 2px;
-
-            background: #ff3030;
-
-            pointer-events: none;
-
-            z-index: 10;
+        body {
+            background: #202020;
+            color: white;
+            font-family: 'Permanent Marker', cursive;
+            overflow-x: hidden;
         }
 
 
@@ -68,12 +43,45 @@
 
         header {
             position: relative;
-
             width: 100%;
+            padding-top: 55px;
+        }
 
-            padding-top: 70px;
 
-            z-index: 1;
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        .navigation {
+            position: absolute;
+
+            top: 60px;
+            left: 30px;
+
+            display: grid;
+
+            grid-template-columns: auto auto;
+            column-gap: 35px;
+            row-gap: 2px;
+
+            font-family: 'Oswald', sans-serif;
+
+            font-size: 20px;
+            font-weight: 600;
+
+            line-height: 1.25;
+        }
+
+        .navigation a {
+            color: white;
+
+            text-decoration: none;
+
+            transition: opacity 0.2s ease;
+        }
+
+        .navigation a:hover {
+            opacity: 0.6;
         }
 
 
@@ -82,22 +90,16 @@
         ========================= */
 
         .site-title {
-
             text-align: center;
 
-            font-family: 'Permanent Marker', cursive;
+            font-family: 'Oswald', sans-serif;
 
-            font-size: 58px;
+            font-size: 52px;
+            font-weight: 600;
 
-            font-weight: 400;
+            letter-spacing: 1px;
 
-            letter-spacing: 3px;
-
-            color: #ffffff;
-
-            margin-bottom: 45px;
-
-            line-height: 1.2;
+            margin-bottom: 35px;
         }
 
 
@@ -107,31 +109,35 @@
 
         .description {
 
-            width: calc(100% - 140px);
+            /* Much wider than before */
+            max-width: 1200px;
 
-            margin: 0 70px 75px;
+            width: 85%;
+
+            margin: 0 auto 75px;
 
             padding: 0;
         }
 
-
         .description p {
 
-            font-family: 'Permanent Marker', cursive;
-
-            color: #ffffff;
+            /*
+             * Condensed font similar to
+             * the reference image
+             */
+            font-family: 'Oswald', sans-serif;
 
             font-size: 18px;
 
-            font-weight: 400;
+            font-weight: 500;
 
-            letter-spacing: 1.4px;
+            line-height: 1.6;
 
-            word-spacing: 3px;
+            letter-spacing: 0.2px;
 
-            line-height: 33px;
+            color: #a8a8a8;
 
-            text-align: left;
+            text-align: center;
         }
 
 
@@ -166,19 +172,18 @@
         .photo img {
 
             width: 100%;
-
             height: 100%;
 
             object-fit: cover;
 
             display: block;
 
-            transition: transform 0.5s ease;
+            transition:
+                transform 0.5s ease;
         }
 
 
         .photo:hover img {
-
             transform: scale(1.02);
         }
 
@@ -189,8 +194,18 @@
 
         @media (max-width: 900px) {
 
-            body::before {
-                left: 25px;
+            .navigation {
+
+                position: relative;
+
+                top: auto;
+                left: auto;
+
+                margin-left: 30px;
+
+                margin-bottom: 50px;
+
+                font-size: 18px;
             }
 
 
@@ -199,16 +214,18 @@
                 font-size: 40px;
 
                 padding: 0 20px;
-
-                letter-spacing: 2px;
             }
 
 
             .description {
 
-                width: calc(100% - 50px);
+                max-width: 100%;
 
-                margin: 0 25px 50px;
+                width: calc(100% - 40px);
+
+                margin-bottom: 50px;
+
+                padding: 0;
             }
 
 
@@ -216,11 +233,9 @@
 
                 font-size: 15px;
 
-                letter-spacing: 1px;
+                line-height: 1.6;
 
-                word-spacing: 2px;
-
-                line-height: 33px;
+                text-align: center;
             }
 
 
@@ -239,6 +254,50 @@
 
         }
 
+
+        /* =========================
+           SMALL PHONES
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            .navigation {
+
+                margin-left: 20px;
+
+                column-gap: 20px;
+
+                font-size: 16px;
+            }
+
+
+            .site-title {
+
+                font-size: 34px;
+            }
+
+
+            .description {
+
+                width: calc(100% - 30px);
+            }
+
+
+            .description p {
+
+                font-size: 14px;
+
+                line-height: 1.55;
+            }
+
+
+            .photo-grid {
+
+                width: calc(100% - 20px);
+            }
+
+        }
+
     </style>
 </head>
 
@@ -253,14 +312,38 @@
     <header>
 
 
-        <!-- TITLE -->
+        <!-- =========================
+             NAVIGATION
+        ========================= -->
+
+        <nav class="navigation">
+
+            <a href="#">STREET/DOCUMENTARY</a>
+            <a href="#">EVENT PHOTOGRAPHY</a>
+
+            <a href="#">OTHER</a>
+            <a href="#">YOUTUBE</a>
+
+            <a href="#">BLOG</a>
+            <a href="#">MONOGRAPH</a>
+
+            <a href="#">ABOUT/CONTACT</a>
+
+        </nav>
+
+
+        <!-- =========================
+             TITLE
+        ========================= -->
 
         <h1 class="site-title">
             SPENSIERALEANDO
         </h1>
 
 
-        <!-- DESCRIPTION -->
+        <!-- =========================
+             DESCRIPTION
+        ========================= -->
 
         <section class="description">
 
@@ -307,7 +390,10 @@
 
             <div class="photo">
 
-                <img src="Image1.jpg" alt="Photography">
+                <img
+                    src="Image1.jpg"
+                    alt="Photography"
+                >
 
             </div>
 
@@ -316,7 +402,10 @@
 
             <div class="photo">
 
-                <img src="Image2.jpg" alt="Photography">
+                <img
+                    src="Image2.jpg"
+                    alt="Photography"
+                >
 
             </div>
 
@@ -328,4 +417,3 @@
 
 </body>
 </html>
-```
