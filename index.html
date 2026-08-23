@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>My Travels</title>
+  <title>Spensieraleando</title>
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@400;500&family=Rock+Salt&display=swap');
 
     * {
       box-sizing: border-box;
@@ -15,9 +15,9 @@
 
     body {
       margin: 0;
-      background: #f7f4ed;
-      color: #222;
-      font-family: 'Permanent Marker', cursive;
+      background: #202020;
+      color: #f2f0e9;
+      overflow-x: hidden;
     }
 
     .page {
@@ -26,99 +26,281 @@
       position: relative;
     }
 
-    /* MAIN TITLE */
-    .title {
-      font-size: 58px;
-      line-height: 1;
+
+    /* =========================================
+       MAIN WORD
+       ========================================= */
+
+    .main-word {
+      position: relative;
       display: inline-block;
-      transform: rotate(-2deg);
-      margin: 0;
+
+      margin-top: 45px;
+      margin-left: 35px;
+
+      font-family: 'Archivo Narrow', sans-serif;
+      font-size: clamp(70px, 11vw, 170px);
+      font-weight: 500;
+
+      letter-spacing: -5px;
+      line-height: 0.9;
+
+      white-space: nowrap;
     }
 
-    /* LITTLE DESCRIPTION IN THE TOP RIGHT */
-    .description {
+
+    /* =========================================
+       THE EXISTING A
+       ========================================= */
+
+    .a-circle {
+      position: relative;
+      display: inline-block;
+    }
+
+    .a-circle::after {
+      content: "";
+
       position: absolute;
-      top: 58px;
-      right: 65px;
 
-      width: 310px;
+      width: 1.05em;
+      height: 0.85em;
 
-      font-size: 17px;
-      line-height: 1.45;
-      text-align: right;
+      left: -0.08em;
+      top: 0.02em;
 
-      transform: rotate(2deg);
-    }
-
-    /* SMALL HAND-DRAWN LINE UNDER THE TITLE */
-    .little-line {
-      width: 145px;
-      height: 3px;
-      background: #222;
-
-      margin-top: 12px;
-
-      transform: rotate(-3deg);
+      border: 3px solid #d62828;
       border-radius: 50%;
+
+      transform: rotate(-8deg);
     }
 
-    /* SPACE WHERE THE TRAVEL CONTENT WILL GO LATER */
-    .content {
-      margin-top: 100px;
+
+    /* =========================================
+       UNDERLINE THE EXISTING A + LE
+       ========================================= */
+
+    .ale {
+      text-decoration: underline;
+      text-decoration-color: #d62828;
+      text-decoration-thickness: 5px;
+      text-underline-offset: 7px;
     }
 
-    @media (max-width: 700px) {
+
+    /* =========================================
+       "ME"
+       ========================================= */
+
+    .me {
+      position: absolute;
+
+      left: 50%;
+      top: 245px;
+
+      color: #d62828;
+
+      font-family: 'Rock Salt', cursive;
+      font-size: 27px;
+
+      transform: rotate(-7deg);
+    }
+
+
+    /* =========================================
+       HAND-DRAWN ARROW
+       ========================================= */
+
+    .arrow {
+      position: absolute;
+
+      left: 43%;
+      top: 220px;
+
+      width: 105px;
+      height: 70px;
+
+      border-top: 3px solid #d62828;
+      border-radius: 50%;
+
+      transform: rotate(8deg);
+    }
+
+    .arrow::after {
+      content: "";
+
+      position: absolute;
+
+      right: -4px;
+      top: -7px;
+
+      width: 16px;
+      height: 16px;
+
+      border-top: 3px solid #d62828;
+      border-right: 3px solid #d62828;
+
+      transform: rotate(35deg);
+    }
+
+
+    /* =========================================
+       TOP RIGHT ENGLISH DESCRIPTION
+       ========================================= */
+
+    .definition {
+      position: absolute;
+
+      top: 45px;
+      right: 60px;
+
+      width: 360px;
+
+      color: #d62828;
+
+      font-family: 'Rock Salt', cursive;
+
+      font-size: 15px;
+      line-height: 1.8;
+
+      text-align: left;
+
+      transform: rotate(-2deg);
+    }
+
+
+    /* =========================================
+       SMALL HANDWRITTEN NOTE
+       ========================================= */
+
+    .note {
+      position: absolute;
+
+      left: 70px;
+      top: 350px;
+
+      color: #d62828;
+
+      font-family: 'Rock Salt', cursive;
+      font-size: 17px;
+
+      transform: rotate(-4deg);
+    }
+
+
+    /* =========================================
+       MOBILE
+       ========================================= */
+
+    @media (max-width: 800px) {
 
       .page {
-        padding: 35px 25px;
+        padding: 30px;
       }
 
-      .title {
-        font-size: 45px;
+      .main-word {
+        margin-left: 0;
+        margin-top: 25px;
+
+        font-size: 17vw;
       }
 
-      .description {
-        position: static;
-        width: 260px;
-        margin-top: 35px;
-        text-align: left;
-        transform: rotate(1deg);
-      }
+      .definition {
+        position: relative;
 
-      .little-line {
-        margin-top: 10px;
-      }
+        top: auto;
+        right: auto;
 
-      .content {
+        width: 90%;
+
         margin-top: 60px;
+
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .arrow {
+        display: none;
+      }
+
+      .me {
+        position: relative;
+
+        left: auto;
+        top: auto;
+
+        display: inline-block;
+
+        margin-left: 55%;
+        margin-top: 25px;
+      }
+
+      .note {
+        position: relative;
+
+        left: auto;
+        top: auto;
+
+        margin-top: 50px;
       }
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <div class="page">
-
-    <!-- TITLE -->
-    <h1 class="title">MY TRAVELS</h1>
-
-    <div class="little-line"></div>
+  <main class="page">
 
 
-    <!-- ENGLISH DESCRIPTION -->
-    <div class="description">
-      A little collection of places I've been,
-      memories I've made, and adventures
-      I never want to forget.
+    <!-- =====================================
+         MAIN TITLE
+         ===================================== -->
+
+    <div class="main-word">
+      SPENSI<span class="a-circle">A</span><span class="ale">LE</span>ANDO
     </div>
 
 
-    <!-- THE REST OF THE PAGE WILL GO HERE LATER -->
-    <div class="content">
+    <!-- =====================================
+         RED "ME"
+         ===================================== -->
+
+    <div class="me">
+      ME
     </div>
 
-  </div>
+
+    <!-- =====================================
+         HAND-DRAWN ARROW
+         ===================================== -->
+
+    <div class="arrow"></div>
+
+
+    <!-- =====================================
+         ENGLISH DESCRIPTION
+         ===================================== -->
+
+    <div class="definition">
+      A LITTLE COLLECTION OF PLACES
+      I'VE BEEN, MEMORIES I'VE MADE,
+      AND ADVENTURES I NEVER WANT
+      TO FORGET.
+    </div>
+
+
+    <!-- =====================================
+         SMALL NOTE
+         ===================================== -->
+
+    <div class="note">
+      a state of lightness
+    </div>
+
+
+  </main>
 
 </body>
 </html>
