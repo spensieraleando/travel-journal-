@@ -4,18 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SPENSIERALEANDO</title>
+    <title>Spensieraleando</title>
 
-    <!-- FONT -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Font similar to the example website -->
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
-
-        /* =========================
-           GENERAL
-        ========================= */
 
         * {
             margin: 0;
@@ -23,19 +17,10 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            background: #222222;
+            background: #202020;
             color: white;
-            font-family: "Oswald", sans-serif;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
+            font-family: 'Oswald', sans-serif;
         }
 
 
@@ -44,75 +29,105 @@
         ========================= */
 
         header {
-            height: 225px;
             position: relative;
-            padding: 55px 4%;
-        }
-
-        /* LEFT MENU */
-
-        .menu {
-            position: absolute;
-            top: 58px;
-            left: 4%;
-
-            font-size: 19px;
-            font-weight: 600;
-            line-height: 1.35;
-        }
-
-        .menu-line {
-            display: flex;
-            gap: 42px;
-        }
-
-        .menu a {
-            transition: opacity 0.2s ease;
-        }
-
-        .menu a:hover {
-            opacity: 0.45;
-        }
-
-
-        /* WEBSITE NAME */
-
-        .logo {
-            text-align: center;
-
-            font-size: clamp(35px, 4vw, 58px);
-            font-weight: 600;
-
-            letter-spacing: 1px;
+            width: 100%;
+            padding-top: 55px;
         }
 
 
         /* =========================
-           MAIN PHOTO GRID
+           NAVIGATION
         ========================= */
 
-        .gallery {
-            width: 95%;
+        .navigation {
+            position: absolute;
+            top: 60px;
+            left: 70px;
+
+            display: grid;
+            grid-template-columns: auto auto;
+            column-gap: 35px;
+            row-gap: 2px;
+
+            font-size: 20px;
+            line-height: 1.25;
+        }
+
+        .navigation a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .navigation a:hover {
+            opacity: 0.6;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        .site-title {
+            text-align: center;
+
+            font-size: 52px;
+            font-weight: 600;
+            letter-spacing: 1px;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* =========================
+           DESCRIPTION
+        ========================= */
+
+        .description {
+            max-width: 900px;
+
+            margin: 0 auto 75px;
+
+            padding: 0 30px;
+        }
+
+        .description p {
+            font-family: Arial, Helvetica, sans-serif;
+
+            font-size: 14px;
+            line-height: 1.7;
+
+            font-weight: 400;
+
+            color: #d0d0d0;
+
+            text-align: left;
+        }
+
+
+        /* =========================
+           PHOTOGRAPHY AREA
+        ========================= */
+
+        .photo-grid {
+            width: calc(100% - 85px);
+
             margin: 0 auto;
 
             display: grid;
+
             grid-template-columns: 1fr 1fr;
 
             gap: 3px;
         }
 
+
         .photo {
-            height: 420px;
+            width: 100%;
+            height: 480px;
 
-            position: relative;
             overflow: hidden;
-
-            cursor: pointer;
         }
 
-        .photo.big {
-            height: 495px;
-        }
 
         .photo img {
             width: 100%;
@@ -122,255 +137,12 @@
 
             display: block;
 
-            transition: transform 0.7s ease;
+            transition: transform 0.5s ease;
         }
+
 
         .photo:hover img {
-            transform: scale(1.04);
-        }
-
-
-        /* PHOTO TITLE */
-
-        .photo-title {
-            position: absolute;
-
-            top: 50%;
-            left: 50%;
-
-            transform: translate(-50%, -50%);
-
-            z-index: 3;
-
-            background: rgba(255, 255, 255, 0.87);
-
-            color: #222;
-
-            padding: 8px 18px;
-
-            font-size: 27px;
-            font-weight: 500;
-
-            letter-spacing: 1px;
-
-            white-space: nowrap;
-        }
-
-
-        /* =========================
-           INTRODUCTION
-        ========================= */
-
-        .section {
-            width: 90%;
-            max-width: 1100px;
-
-            margin: 120px auto;
-
-            text-align: center;
-        }
-
-        .section h2 {
-            font-size: 42px;
-            margin-bottom: 25px;
-            font-weight: 500;
-        }
-
-        .section p {
-            max-width: 750px;
-
-            margin: auto;
-
-            font-family: Arial, sans-serif;
-
-            font-size: 17px;
-            line-height: 1.8;
-
-            color: #dddddd;
-        }
-
-
-        /* =========================
-           TRAVEL STORIES
-        ========================= */
-
-        .stories {
-            width: 95%;
-            margin: 0 auto 120px;
-
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 4px;
-        }
-
-        .story {
-            position: relative;
-
-            height: 400px;
-
-            overflow: hidden;
-
-            cursor: pointer;
-        }
-
-        .story img {
-            width: 100%;
-            height: 100%;
-
-            object-fit: cover;
-
-            transition: transform 0.6s ease;
-        }
-
-        .story:hover img {
-            transform: scale(1.05);
-        }
-
-        .story-text {
-            position: absolute;
-
-            bottom: 0;
-            left: 0;
-            right: 0;
-
-            padding: 35px 25px 25px;
-
-            background: linear-gradient(
-                transparent,
-                rgba(0,0,0,0.9)
-            );
-        }
-
-        .story-text h3 {
-            font-size: 27px;
-            font-weight: 500;
-        }
-
-        .story-text p {
-            margin-top: 5px;
-
-            font-family: Arial, sans-serif;
-
-            font-size: 14px;
-
-            color: #ddd;
-        }
-
-
-        /* =========================
-           PHOTOGRAPHY SECTION
-        ========================= */
-
-        .photography {
-            width: 95%;
-            margin: 0 auto 120px;
-
-            display: grid;
-
-            grid-template-columns: 2fr 1fr;
-
-            gap: 4px;
-        }
-
-        .photography img {
-            width: 100%;
-            height: 600px;
-
-            object-fit: cover;
-        }
-
-        .photography-small {
-            display: grid;
-
-            grid-template-rows: 1fr 1fr;
-
-            gap: 4px;
-        }
-
-        .photography-small img {
-            height: 298px;
-        }
-
-
-        /* =========================
-           ABOUT
-        ========================= */
-
-        .about {
-            width: 90%;
-            max-width: 900px;
-
-            margin: 120px auto;
-
-            text-align: center;
-        }
-
-        .about h2 {
-            font-size: 42px;
-
-            margin-bottom: 25px;
-
-            font-weight: 500;
-        }
-
-        .about p {
-            font-family: Arial, sans-serif;
-
-            line-height: 1.8;
-
-            color: #ddd;
-
-            font-size: 17px;
-        }
-
-
-        /* =========================
-           CONTACT
-        ========================= */
-
-        .contact {
-            text-align: center;
-
-            padding: 100px 20px;
-
-            border-top: 1px solid #444;
-        }
-
-        .contact h2 {
-            font-size: 42px;
-
-            margin-bottom: 20px;
-
-            font-weight: 500;
-        }
-
-        .contact a {
-            font-family: Arial, sans-serif;
-
-            font-size: 16px;
-
-            color: #ddd;
-
-            border-bottom: 1px solid #777;
-
-            padding-bottom: 3px;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            text-align: center;
-
-            padding: 35px;
-
-            font-size: 13px;
-
-            color: #999;
+            transform: scale(1.02);
         }
 
 
@@ -378,85 +150,53 @@
            MOBILE
         ========================= */
 
-        @media (max-width: 800px) {
+        @media (max-width: 900px) {
 
-            header {
-                height: 260px;
-            }
-
-            .menu {
+            .navigation {
                 position: relative;
 
-                top: 0;
-                left: 0;
+                top: auto;
+                left: auto;
 
-                font-size: 14px;
+                margin-left: 30px;
+                margin-bottom: 50px;
+
+                font-size: 18px;
             }
 
-            .menu-line {
-                gap: 20px;
-                margin-bottom: 2px;
+
+            .site-title {
+                font-size: 40px;
+
+                padding: 0 20px;
             }
 
-            .logo {
-                margin-top: 75px;
 
-                font-size: 34px;
+            .description {
+                max-width: 100%;
+
+                margin-bottom: 50px;
+
+                padding: 0 25px;
             }
 
-            .gallery {
-                width: 100%;
+
+            .description p {
+                font-size: 13px;
+            }
+
+
+            .photo-grid {
+                width: calc(100% - 30px);
 
                 grid-template-columns: 1fr;
             }
 
-            .photo,
-            .photo.big {
-                height: 360px;
-            }
 
-            .photo-title {
-                font-size: 22px;
-            }
-
-            .stories {
-                width: 100%;
-
-                grid-template-columns: 1fr;
-            }
-
-            .story {
-                height: 350px;
-            }
-
-            .photography {
-                width: 100%;
-
-                grid-template-columns: 1fr;
-            }
-
-            .photography img {
+            .photo {
                 height: 400px;
             }
 
-            .photography-small {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 1fr;
-            }
-
-            .photography-small img {
-                height: 250px;
-            }
-
-            .section {
-                margin: 80px auto;
-            }
-
-            .section h2,
-            .about h2,
-            .contact h2 {
-                font-size: 34px;
-            }
         }
 
     </style>
@@ -466,447 +206,98 @@
 <body>
 
 
-<!-- =====================================================
-     HEADER
-===================================================== -->
+    <!-- =========================
+         HEADER
+    ========================= -->
 
-<header id="home">
-
-    <nav class="menu">
-
-        <div class="menu-line">
-            <a href="#travel">TRAVEL</a>
-            <a href="#photography">PHOTOGRAPHY</a>
-        </div>
-
-        <div class="menu-line">
-            <a href="#stories">STORIES</a>
-            <a href="#youtube">YOUTUBE</a>
-            <a href="#blog">BLOG</a>
-        </div>
-
-        <div class="menu-line">
-            <a href="#about">ABOUT / CONTACT</a>
-        </div>
-
-    </nav>
+    <header>
 
 
-    <div class="logo">
-        SPENSIERALEANDO
-    </div>
+        <!-- NAVIGATION -->
 
-</header>
+        <nav class="navigation">
+
+            <a href="#">STREET/DOCUMENTARY</a>
+            <a href="#">EVENT PHOTOGRAPHY</a>
+
+            <a href="#">OTHER</a>
+            <a href="#">YOUTUBE</a>
+
+            <a href="#">BLOG</a>
+            <a href="#">MONOGRAPH</a>
+
+            <a href="#">ABOUT/CONTACT</a>
+
+        </nav>
 
 
+        <!-- TITLE -->
 
-<!-- =====================================================
-     MAIN HOMEPAGE PHOTO GRID
-===================================================== -->
-
-<main id="travel">
-
-    <div class="gallery">
+        <h1 class="site-title">
+            SPENSIERALEANDO
+        </h1>
 
 
-        <!-- PHOTO 1 -->
+        <!-- DESCRIPTION -->
 
-        <a href="#italy" class="photo big">
+        <section class="description">
 
-            <img
-                src="https://images.unsplash.com/photo-1529260830199-42c24126f198?auto=format&fit=crop&w=1600&q=80"
-                alt="Italy">
+            <p>
+                This is a catalogue of some of the streets around the world from my lenses.
+                Street photography to me is not ‘taking pictures of random people’ as some
+                might think and say, my intent is to unveil the idea that some might have
+                about how you need a studio, planned poses, the perfect makeup, outfit,
+                hair to make a ‘good picture’, but instead sometimes just paying attention
+                to the unnoticed details of our everyday life such as shades in the walls
+                of the houses you walk by every day, the light that reflects on the window
+                of the shop you are about to enter, the shadows of the people created on
+                the sidewalk from the sunset, and my favourite emotions and expressions,
+                which don’t necessarily need to be shown by capturing people’s faces,
+                it could be from their body language, or the hand gestures they are making
+                when speaking to someone, the way someone’s coat is folding from a tight
+                hug they’re getting from someone, a child’s finger pointing at a bird, and
+                I could go on and on, but these are a few examples not only how you could
+                get a ‘cool or wholesome picture’ to post on Instagram, but also how you
+                can connect to the world around you, to the city you are visiting, to its
+                buildings, the skies, the clouds, the cigarettes on the floor marked with
+                someone’s lipstick, someone’s tattoo, but most importantly the people around
+                you, without needing a one to one interaction, as we all know how hard it can
+                be to speak to ‘strangers’. I think just noticing them is enough, your eyes
+                are a lens through which you can admire and appreciate without the need for
+                words, just like a camera.
+            </p>
 
-            <div class="photo-title">
-                ITALIA
+        </section>
+
+    </header>
+
+
+    <!-- =========================
+         PHOTOGRAPHY
+    ========================= -->
+
+    <main>
+
+        <div class="photo-grid">
+
+
+            <!-- FIRST PHOTO -->
+
+            <div class="photo">
+                <img src="Image1.jpg" alt="Photography">
             </div>
 
-        </a>
 
+            <!-- SECOND PHOTO -->
 
-
-        <!-- PHOTO 2 -->
-
-        <a href="#paris" class="photo big">
-
-            <img
-                src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1600&q=80"
-                alt="Paris">
-
-            <div class="photo-title">
-                PARIS
+            <div class="photo">
+                <img src="Image2.jpg" alt="Photography">
             </div>
 
-        </a>
-
-
-
-        <!-- PHOTO 3 -->
-
-        <a href="#japan" class="photo">
-
-            <img
-                src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=1200&q=80"
-                alt="Japan">
-
-            <div class="photo-title">
-                GIAPPONE
-            </div>
-
-        </a>
-
-
-
-        <!-- PHOTO 4 -->
-
-        <a href="#london" class="photo">
-
-            <img
-                src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=1200&q=80"
-                alt="London">
-
-            <div class="photo-title">
-                LONDRA
-            </div>
-
-        </a>
-
-
-
-        <!-- PHOTO 5 -->
-
-        <a href="#portugal" class="photo">
-
-            <img
-                src="https://images.unsplash.com/photo-1555881400-74d7acaacd8b?auto=format&fit=crop&w=1200&q=80"
-                alt="Portugal">
-
-            <div class="photo-title">
-                PORTOGALLO
-            </div>
-
-        </a>
-
-
-
-        <!-- PHOTO 6 -->
-
-        <a href="#morocco" class="photo">
-
-            <img
-                src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&w=1200&q=80"
-                alt="Morocco">
-
-            <div class="photo-title">
-                MAROCCO
-            </div>
-
-        </a>
-
-    </div>
-
-</main>
-
-
-
-<!-- =====================================================
-     INTRODUCTION
-===================================================== -->
-
-<section class="section" id="blog">
-
-    <h2>SPENSIERALEANDO</h2>
-
-    <p>
-        Travel, stories, photographs and little moments from
-        around the world. A personal collection of places,
-        people, food and experiences worth remembering.
-    </p>
-
-</section>
-
-
-
-<!-- =====================================================
-     TRAVEL STORIES
-===================================================== -->
-
-<section id="stories">
-
-    <div class="section">
-
-        <h2>TRAVEL STORIES</h2>
-
-        <p>
-            Places I've visited, things I've discovered and
-            stories that deserve more than just a photograph.
-        </p>
-
-    </div>
-
-
-    <div class="stories">
-
-
-        <article class="story">
-
-            <img
-                src="https://images.unsplash.com/photo-1530789253388-582c481c54b0?auto=format&fit=crop&w=1000&q=80"
-                alt="Travel">
-
-            <div class="story-text">
-
-                <h3>THE FIRST JOURNEY</h3>
-
-                <p>
-                    A collection of memories from the road.
-                </p>
-
-            </div>
-
-        </article>
-
-
-
-        <article class="story">
-
-            <img
-                src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=1000&q=80"
-                alt="Road trip">
-
-            <div class="story-text">
-
-                <h3>ON THE ROAD</h3>
-
-                <p>
-                    Roads, unexpected stops and new places.
-                </p>
-
-            </div>
-
-        </article>
-
-
-
-        <article class="story">
-
-            <img
-                src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?auto=format&fit=crop&w=1000&q=80"
-                alt="Beach">
-
-            <div class="story-text">
-
-                <h3>SUMMER SOMEWHERE</h3>
-
-                <p>
-                    Sun, sea and nowhere else to be.
-                </p>
-
-            </div>
-
-        </article>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     PHOTOGRAPHY
-===================================================== -->
-
-<section id="photography">
-
-    <div class="section">
-
-        <h2>PHOTOGRAPHY</h2>
-
-        <p>
-            A visual diary of the places and people I meet
-            along the way.
-        </p>
-
-    </div>
-
-
-    <div class="photography">
-
-        <img
-            src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1600&q=80"
-            alt="Travel photography">
-
-
-        <div class="photography-small">
-
-            <img
-                src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=80"
-                alt="Landscape">
-
-            <img
-                src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1000&q=80"
-                alt="Mountain">
 
         </div>
 
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     DESTINATION STORIES
-===================================================== -->
-
-<section class="section" id="italy">
-
-    <h2>ITALIA</h2>
-
-    <p>
-        Cities, coastlines, food and everything that makes
-        Italy worth getting lost in.
-    </p>
-
-</section>
-
-
-<section class="section" id="paris">
-
-    <h2>PARIS</h2>
-
-    <p>
-        Streets, cafés, architecture and slow afternoons
-        in Paris.
-    </p>
-
-</section>
-
-
-<section class="section" id="japan">
-
-    <h2>GIAPPONE</h2>
-
-    <p>
-        A journey through Japan, from quiet streets to
-        unforgettable cities.
-    </p>
-
-</section>
-
-
-<section class="section" id="london">
-
-    <h2>LONDRA</h2>
-
-    <p>
-        Exploring London one neighbourhood at a time.
-    </p>
-
-</section>
-
-
-<section class="section" id="portugal">
-
-    <h2>PORTOGALLO</h2>
-
-    <p>
-        Ocean views, colourful streets and Portuguese
-        adventures.
-    </p>
-
-</section>
-
-
-<section class="section" id="morocco">
-
-    <h2>MAROCCO</h2>
-
-    <p>
-        Markets, deserts, colours and unforgettable
-        landscapes.
-    </p>
-
-</section>
-
-
-
-<!-- =====================================================
-     YOUTUBE
-===================================================== -->
-
-<section class="section" id="youtube">
-
-    <h2>YOUTUBE</h2>
-
-    <p>
-        Travel videos, guides and stories from the road.
-        You can add your YouTube videos here later.
-    </p>
-
-</section>
-
-
-
-<!-- =====================================================
-     ABOUT / CONTACT
-===================================================== -->
-
-<section class="about" id="about">
-
-    <h2>ABOUT / CONTACT</h2>
-
-    <p>
-        Welcome to Spensieraleando — my little corner of
-        the internet dedicated to travelling, photography
-        and discovering new places.
-        <br><br>
-        This is where I collect the places I visit,
-        the photographs I take and the stories I want
-        to remember.
-    </p>
-
-</section>
-
-
-
-<!-- =====================================================
-     CONTACT
-===================================================== -->
-
-<section class="contact">
-
-    <h2>LET'S TALK</h2>
-
-    <a href="mailto:hello@spensieraleando.com">
-        hello@spensieraleando.com
-    </a>
-
-</section>
-
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer>
-
-    © 2026 SPENSIERALEANDO
-
-</footer>
-
-
-
-<!-- =====================================================
-     SIMPLE JAVASCRIPT
-===================================================== -->
-
-<script>
-
-    console.log("Welcome to SPENSIERALEANDO");
-
-</script>
+    </main>
 
 
 </body>
