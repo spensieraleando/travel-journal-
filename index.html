@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,8 +7,8 @@
 
     <title>Spensieraleando</title>
 
-    <!-- Font similar to the example website -->
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Marker font for title + Oswald for description -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&family=Permanent+Marker&display=swap" rel="stylesheet">
 
     <style>
 
@@ -20,7 +21,7 @@
         body {
             background: #202020;
             color: white;
-            font-family: 'Oswald', sans-serif;
+            font-family: 'Permanent Marker', cursive;
         }
 
 
@@ -70,8 +71,10 @@
         .site-title {
             text-align: center;
 
+            font-family: 'Permanent Marker', cursive;
+
             font-size: 52px;
-            font-weight: 600;
+            font-weight: 400;
             letter-spacing: 1px;
 
             margin-bottom: 35px;
@@ -83,20 +86,21 @@
         ========================= */
 
         .description {
-            max-width: 900px;
+            width: calc(100% - 2in);
+            max-width: none;
 
             margin: 0 auto 75px;
 
-            padding: 0 30px;
+            padding: 0;
         }
 
         .description p {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Oswald', sans-serif;
 
-            font-size: 14px;
-            line-height: 1.7;
+            font-size: 15px;
+            line-height: 1.65;
 
-            font-weight: 400;
+            font-weight: 300;
 
             color: #d0d0d0;
 
@@ -173,16 +177,17 @@
 
 
             .description {
-                max-width: 100%;
+                width: calc(100% - 50px);
 
                 margin-bottom: 50px;
 
-                padding: 0 25px;
+                padding: 0;
             }
 
 
             .description p {
                 font-size: 13px;
+                line-height: 1.6;
             }
 
 
@@ -302,3 +307,4 @@
 
 </body>
 </html>
+```
